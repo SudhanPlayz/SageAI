@@ -26,6 +26,7 @@ export interface SageAISettings {
 	apiProvider: APIProvider;
 	model: string;
 	baseURL?: string;
+	hideThoughtProcess: boolean;
 }
 
 export interface SageCommand {
@@ -48,6 +49,7 @@ const DEFAULT_SETTINGS: SageAISettings = {
 	apiProvider: APIProvider.OPENROUTER,
 	apiKey: "",
 	model: "gpt-4o-mini",
+	hideThoughtProcess: true,
 };
 
 const commands = [SummarizeCommand, ExplainCommand, EditCommand];

@@ -1637,6 +1637,12 @@
 		opacity: 1;
 	}
 }
+
+/* Add this near the top of the file, we don't need to see the full file content */
+.sage-hide-thought-process .sage-thought-process {
+	display: none !important;
+}
+
 /* File Operations Approval Modal */
 .sage-pending-operation-modal {
 	position: fixed;

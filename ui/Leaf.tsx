@@ -429,7 +429,7 @@ export const Leaf = () => {
 
 	return (
 		<div
-			className={`sage-container ${isHistoryVisible ? "with-history" : ""} ${isLoading ? "is-loading" : ""}`}>
+			className={`sage-container ${isHistoryVisible ? "with-history" : ""} ${isLoading ? "is-loading" : ""} ${app?.settings.hideThoughtProcess ? "sage-hide-thought-process" : ""}`}>
 			<GlobalLoadingIndicator
 				isActive={isLoading}
 				currentStatus={currentStep}
@@ -537,7 +537,9 @@ export const Leaf = () => {
 
 											{msg.role === "assistant" &&
 												msg.toolEvents &&
-												msg.toolEvents.length > 0 && (
+												msg.toolEvents.length > 0 &&
+												!app?.settings
+													.hideThoughtProcess && (
 													<div className="sage-thought-process">
 														<div className="sage-thought-header">
 															<BrainIcon
@@ -640,17 +642,22 @@ export const Leaf = () => {
 										</div>
 									)}
 
-									{toolActivity.length > 0 && (
-										<div className="sage-thought-process active">
-											{toolActivity.map((event, i) => (
-												<div
-													key={i}
-													className="sage-thought-item">
-													{renderToolEvent(event)}
-												</div>
-											))}
-										</div>
-									)}
+									{toolActivity.length > 0 &&
+										!app?.settings.hideThoughtProcess && (
+											<div className="sage-thought-process active">
+												{toolActivity.map(
+													(event, i) => (
+														<div
+															key={i}
+															className="sage-thought-item">
+															{renderToolEvent(
+																event,
+															)}
+														</div>
+													),
+												)}
+											</div>
+										)}
 
 									{streamingMessage && (
 										<div className="sage-streaming-content">

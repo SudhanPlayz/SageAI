@@ -75,6 +75,18 @@ export class SettingsTab extends PluginSettingTab {
 				);
 		}
 
+		new Setting(containerEl)
+			.setName("Hide Thought Process")
+			.setDesc("Hide the AI's thought process and tool usage details")
+			.addToggle((toggle) =>
+				toggle
+					.setValue(this.plugin.settings.hideThoughtProcess)
+					.onChange(async (value) => {
+						this.plugin.settings.hideThoughtProcess = value;
+						await this.plugin.saveSettings();
+					}),
+			);
+
 		const fundingEl = containerEl.createDiv("sage-funding");
 		fundingEl.innerHTML = `
 			<div style="
