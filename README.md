@@ -59,17 +59,6 @@ Sage AI is a powerful plugin that brings advanced AI capabilities to your note-t
     npm run dev
     ```
 
-### Project Structure
-
-- `main.ts` - Main plugin code
-- `styles.css` - Plugin styles
-- `manifest.json` - Plugin manifest
-- `ai/` - AI-related functionality
-- `commands/` - Plugin commands
-- `hooks/` - React hooks
-- `lib/` - Utility functions
-- `ui/` - User interface components
-
 ## Contributing
 
 We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) file for details.

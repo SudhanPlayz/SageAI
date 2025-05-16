@@ -1,4 +1,4 @@
-import { streamText } from "ai";
+import { smoothStream, streamText } from "ai";
 import { getModel } from "../core/model";
 import { Conversation } from "lib/storage";
 import SageAI from "main";
@@ -123,5 +123,8 @@ async function streamAIResponse(
 			),
 			listFolder: createListFolderTool(app, callbacks, allToolEvents),
 		},
+		experimental_transform: smoothStream({
+			delayInMs: 20,
+		}),
 	});
 }
