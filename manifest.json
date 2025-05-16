@@ -3,7 +3,7 @@
 	"name": "Sage AI",
 	"version": "1.0.0",
 	"minAppVersion": "1.0.0",
-	"description": "Sage AI is a powerful Obsidian plugin that brings advanced AI capabilities to your note-taking workflow. It offers intelligent text generation, summarization, and analysis features to enhance your productivity and creativity. Whether you're writing, researching, or organizing your thoughts, Sage AI helps you work smarter with AI-powered assistance.",
+	"description": "Sage AI is a powerful plugin that brings advanced AI capabilities to your note-taking workflow. It offers intelligent text generation, summarization, and analysis features to enhance your productivity and creativity. Whether you're writing, researching, or organizing your thoughts, Sage AI helps you work smarter with AI-powered assistance.",
 	"author": "SudhanPlayz",
 	"authorUrl": "https://github.com/SudhanPlayz",
 	"fundingUrl": "https://github.com/sponsors/SudhanPlayz",

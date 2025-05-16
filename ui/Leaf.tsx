@@ -479,7 +479,7 @@ export const Leaf = () => {
 								<Sparkles size={64} />
 							</div>
 							<h3>Welcome to Sage AI</h3>
-							<p>Your intelligent assistant for Obsidian</p>
+							<p>Your intelligent assistant</p>
 							<div className="sage-suggestions">
 								<h4>Try asking:</h4>
 								<div className="sage-suggestion-items">

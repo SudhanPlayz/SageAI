@@ -1,6 +1,6 @@
-# Sage AI - Obsidian Plugin
+# Sage AI - AI Assistant Plugin
 
-Sage AI is a powerful Obsidian plugin that brings advanced AI capabilities to your note-taking workflow. It offers intelligent text generation, summarization, and analysis features to enhance your productivity and creativity.
+Sage AI is a powerful plugin that brings advanced AI capabilities to your note-taking workflow. It offers intelligent text generation, summarization, and analysis features to enhance your productivity and creativity.
 
 ## Features
 
@@ -8,13 +8,13 @@ Sage AI is a powerful Obsidian plugin that brings advanced AI capabilities to yo
 - 📝 Smart summarization of your notes
 - 🔍 Intelligent analysis of your content
 - 🎯 Context-aware suggestions
-- ⚡ Seamless integration with Obsidian
+- ⚡ Seamless integration with your workflow
 
 ## Installation
 
-### From Obsidian
+### From Community Plugins
 
-1. Open Obsidian Settings
+1. Open Settings
 2. Go to Community Plugins
 3. Search for "Sage AI"
 4. Click Install
@@ -23,8 +23,8 @@ Sage AI is a powerful Obsidian plugin that brings advanced AI capabilities to yo
 ### Manual Installation
 
 1. Download the latest release from the [releases page](https://github.com/SudhanPlayz/SageAI/releases)
-2. Extract the files into your vault's plugins folder: `<vault>/.obsidian/plugins/sageai`
-3. Reload Obsidian
+2. Extract the files into your plugins folder: `<vault>/.obsidian/plugins/sageai`
+3. Reload the application
 4. Enable the plugin in Settings > Community Plugins
 
 ## Usage
