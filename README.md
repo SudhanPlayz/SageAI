@@ -29,7 +29,39 @@ Sage AI is a powerful plugin that brings advanced AI capabilities to your note-t
 
 ## Usage
 
-[Detailed usage instructions will be added here]
+### Initial Setup
+
+1. After installation, go to Settings > Community Plugins > Sage AI
+2. Configure your preferred AI provider:
+    - OpenRouter (default)
+    - Google Gemini
+    - Ollama (local)
+3. Enter your API key (required for OpenRouter and Google Gemini)
+4. Select your preferred model (e.g., gpt-4, gpt-4o-mini)
+5. For Ollama users, configure the base URL (default: http://localhost:11434)
+
+### Using Sage AI
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9XEplIKSbLE" title="Sage AI Usage Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### Quick Access
+
+- Click the sparkle icon (✨) in the ribbon to open the Sage AI interface
+- The interface will appear in a new panel on the right side of your workspace
+
+#### Tips for Best Results
+
+- Be specific in your prompts and instructions
+- Use the context-aware features by selecting relevant text before using commands
+- The AI considers your current file, cursor position, and selected text for better results
+- You can hide the AI's thought process in settings for a cleaner interface
+
+### Advanced Features
+
+- **Context Awareness**: Sage AI automatically considers your current file, cursor position, and selected text
+- **Multiple AI Providers**: Switch between different AI providers based on your needs
+- **Custom Models**: Use different models for different tasks
+- **Local Processing**: Run AI locally using Ollama for privacy-sensitive tasks
 
 ## Development
 
