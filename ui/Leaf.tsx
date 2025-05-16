@@ -14,16 +14,14 @@ import {
 	CheckIcon,
 } from "lucide-react";
 import { chatWithAgent } from "ai/agent";
-import { FileOperationManager } from "ai/managers";
 import { useApp } from "hooks/app";
-import { PendingFileOperation, StreamCallbacks, ToolEvent } from "ai/types";
+import { StreamCallbacks, ToolEvent } from "ai/types";
 
 // Components
 import { GlobalLoadingIndicator } from "./components/GlobalLoadingIndicator";
 import { ActivityTracker } from "./components/ActivityTracker";
 import { HistoryPanel } from "./components/HistoryPanel";
 import { ObsidianMarkdownContent } from "./components/ObsidianMarkdownContent";
-import { PendingOperationsModal } from "./components/PendingOperationsModal";
 import { ToolOperationIndicator } from "./components/ToolOperationIndicator";
 
 // Types
@@ -48,9 +46,6 @@ export const Leaf = () => {
 	const [isHistoryVisible, setIsHistoryVisible] = useState(false);
 	const [currentStep, setCurrentStep] = useState<string>("");
 	const conversationRef = useRef<HTMLDivElement>(null);
-	const [pendingOperations, setPendingOperations] = useState<
-		PendingFileOperation[]
-	>([]);
 
 	useEffect(() => {
 		if (app && messages.length > 0) {
@@ -399,34 +394,6 @@ export const Leaf = () => {
 		return null;
 	};
 
-	useEffect(() => {
-		const checkPendingOperations = () => {
-			if (app) {
-				const operations =
-					FileOperationManager.getAllPendingOperations();
-				setPendingOperations(
-					operations.filter((op) => !op.approved && !op.rejected),
-				);
-			}
-		};
-
-		checkPendingOperations();
-
-		const interval = setInterval(checkPendingOperations, 1000);
-
-		return () => clearInterval(interval);
-	}, [app]);
-
-	const handleApproveOperation = (id: string) => {
-		FileOperationManager.approvePendingOperation(id);
-		setPendingOperations((prev) => prev.filter((op) => op.id !== id));
-	};
-
-	const handleRejectOperation = (id: string) => {
-		FileOperationManager.rejectPendingOperation(id);
-		setPendingOperations((prev) => prev.filter((op) => op.id !== id));
-	};
-
 	return (
 		<div
 			className={`sage-container ${isHistoryVisible ? "with-history" : ""} ${isLoading ? "is-loading" : ""} ${app?.settings.hideThoughtProcess ? "sage-hide-thought-process" : ""}`}>
@@ -434,14 +401,6 @@ export const Leaf = () => {
 				isActive={isLoading}
 				currentStatus={currentStep}
 			/>
-
-			{pendingOperations.length > 0 && (
-				<PendingOperationsModal
-					operation={pendingOperations[0]}
-					onApprove={handleApproveOperation}
-					onReject={handleRejectOperation}
-				/>
-			)}
 
 			<HistoryPanel
 				visible={isHistoryVisible}

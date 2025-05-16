@@ -36,6 +36,22 @@ export function createWriteFileTool(
 				if (existingFile) {
 					await app.app.vault.modify(existingFile, content);
 				} else {
+					const parentPath = path.substring(0, path.lastIndexOf("/"));
+					if (
+						parentPath &&
+						!app.app.vault.getAbstractFileByPath(parentPath)
+					) {
+						try {
+							await app.app.vault.createFolder(parentPath);
+							console.log(`Created parent folder: ${parentPath}`);
+						} catch (folderError) {
+							console.error(
+								`Error creating parent folder: ${parentPath}`,
+								folderError,
+							);
+						}
+					}
+
 					await app.app.vault.create(path, content);
 				}
 

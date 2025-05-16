@@ -1,67 +1,50 @@
 import { tool } from "ai";
 import { z } from "zod";
-import SageAI from "main";
 import { StreamCallbacks, ToolEvent, ToolErrorResult } from "ai/types";
+import SageAI from "main";
 
-export function createDeleteFileTool(
+export function createCreateFolderTool(
 	app: SageAI,
 	callbacks?: StreamCallbacks,
 	allToolEvents?: ToolEvent[],
 ) {
 	return tool({
-		description: "Delete a file from the vault",
+		description: "Create a new folder in the vault",
 		parameters: z.object({
-			path: z.string().describe("The path of the file to delete"),
+			path: z
+				.string()
+				.describe("The path where the folder should be created"),
 		}),
 		execute: async ({ path }) => {
-			console.log("Executing deleteFile tool with path:", path);
+			console.log("Executing createFolder tool with path:", path);
 
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
-				tool: "deleteFile",
+				tool: "createFolder",
 				args: { path },
 				timestamp: Date.now(),
 			};
 
 			callbacks?.onToolEvent?.(toolEvent);
-			callbacks?.onToolCall?.("deleteFile", { path });
+			callbacks?.onToolCall?.("createFolder", { path });
 			allToolEvents?.push(toolEvent);
 
 			try {
-				const file = app.app.vault.getFileByPath(path);
-				if (!file) {
-					const errorResult: ToolErrorResult = {
-						success: false,
-						error: "File not found",
-						path,
-					};
-
-					const resultEvent: ToolEvent = {
-						type: "toolResult",
-						tool: "deleteFile",
-						args: { path },
-						result: errorResult,
-						timestamp: Date.now(),
-					};
-
-					callbacks?.onToolEvent?.(resultEvent);
-					callbacks?.onToolResult?.(errorResult);
-					allToolEvents?.push(resultEvent);
-
-					return errorResult;
+				if (app.app.vault.getAbstractFileByPath(path)) {
+					throw new Error(`Folder "${path}" already exists`);
 				}
 
-				await app.app.vault.delete(file);
+				await app.app.vault.createFolder(path);
 
 				const result = {
 					success: true,
 					path,
-					message: "File deleted successfully",
+					message: "Folder created successfully",
 				};
 
 				const resultEvent: ToolEvent = {
 					type: "toolResult",
-					tool: "deleteFile",
+					tool: "createFolder",
 					args: { path },
 					result,
 					timestamp: Date.now(),
@@ -73,11 +56,11 @@ export function createDeleteFileTool(
 
 				return result;
 			} catch (error) {
-				console.error("Error in deleteFile tool:", error);
+				console.error("Error in createFolder tool:", error);
 
 				const errorResult: ToolErrorResult = {
 					success: false,
-					error: "Failed to delete file",
+					error: "Failed to create folder",
 					message:
 						error instanceof Error
 							? error.message
@@ -87,7 +70,7 @@ export function createDeleteFileTool(
 
 				const resultEvent: ToolEvent = {
 					type: "toolResult",
-					tool: "deleteFile",
+					tool: "createFolder",
 					args: { path },
 					result: errorResult,
 					timestamp: Date.now(),

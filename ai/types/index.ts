@@ -39,20 +39,3 @@ export type ToolErrorResult = {
 };
 
 export type ToolResult<T> = ToolSuccessResult<T> | ToolErrorResult;
-
-export type PendingFileOperation = {
-	id: string;
-	type:
-		| "rename"
-		| "delete"
-		| "move"
-		| "createFolder"
-		| "deleteFolder"
-		| "moveFolder";
-	sourcePath: string;
-	targetPath?: string;
-	approved: boolean;
-	rejected: boolean;
-	timestamp: number;
-	description: string;
-};

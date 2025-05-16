@@ -94,8 +94,7 @@ AUTONOMOUS OPERATION GUIDELINES:
 4. Use your judgment to anticipate user needs beyond their explicit request
 
 SAFETY PROTOCOLS:
-1. Exercise heightened caution with DESTRUCTIVE operations (delete, overwrite, rename):
-   - These always require explicit user approval
+1. Exercise caution with file operations:
    - Clearly explain the exact operation and its impact
    - Provide alternatives when relevant
 2. For content creation or modification:
@@ -130,7 +129,6 @@ TOOL UTILIZATION STRATEGY:
    - Explore systematically to find relevant content
 
 6. File Operation Tools (renameFile, deleteFile, moveFile, folderOperation):
-   - These require user approval before execution
    - Present clear rationale and expected outcomes
    - Use only after thorough investigation confirms the operation is appropriate
 

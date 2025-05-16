@@ -11,15 +11,16 @@ import {
 	createMoveFileTool,
 } from "../tools/file";
 import {
-	createFolderOperationTool,
+	createCreateFolderTool,
 	createListFolderTool,
+	createDeleteFolderTool,
+	createMoveFolderTool,
 } from "../tools/folder";
 import {
 	createGrepFilesTool,
 	createRenameFileTool,
 	createDeleteFileTool,
 } from "../tools/file";
-import { FileOperationManager } from "../managers/index";
 import { enhancePromptWithEditorContext } from "../utils/context";
 import { processAIResponse } from "./response";
 import { handleChatError } from "./error";
@@ -30,8 +31,6 @@ export const chatWithAgent = async (
 	prompt: string,
 	callbacks?: StreamCallbacks,
 ): Promise<AssistantResponse> => {
-	FileOperationManager.setApp(app);
-
 	const storage = app.storage;
 	const allToolEvents: ToolEvent[] = [];
 
@@ -116,11 +115,9 @@ async function streamAIResponse(
 			renameFile: createRenameFileTool(app, callbacks, allToolEvents),
 			deleteFile: createDeleteFileTool(app, callbacks, allToolEvents),
 			moveFile: createMoveFileTool(app, callbacks, allToolEvents),
-			folderOperation: createFolderOperationTool(
-				app,
-				callbacks,
-				allToolEvents,
-			),
+			createFolder: createCreateFolderTool(app, callbacks, allToolEvents),
+			deleteFolder: createDeleteFolderTool(app, callbacks, allToolEvents),
+			moveFolder: createMoveFolderTool(app, callbacks, allToolEvents),
 			listFolder: createListFolderTool(app, callbacks, allToolEvents),
 		},
 		experimental_transform: smoothStream({

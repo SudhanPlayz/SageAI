@@ -1,7 +1,7 @@
 import { tool } from "ai";
 import { z } from "zod";
-import { StreamCallbacks, ToolEvent, ToolErrorResult } from "../../types";
-import SageAI from "../../../main";
+import { StreamCallbacks, ToolEvent, ToolErrorResult } from "ai/types";
+import SageAI from "main";
 import { TFile } from "obsidian";
 
 export function createListFolderTool(
