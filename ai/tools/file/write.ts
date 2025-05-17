@@ -17,8 +17,6 @@ export function createWriteFileTool(
 			content: z.string().describe("The content to write to the file"),
 		}),
 		execute: async ({ path, content }) => {
-			console.log("Executing writeFile tool with path:", path);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "writeFile",
@@ -43,13 +41,7 @@ export function createWriteFileTool(
 					) {
 						try {
 							await app.app.vault.createFolder(parentPath);
-							console.log(`Created parent folder: ${parentPath}`);
-						} catch (folderError) {
-							console.error(
-								`Error creating parent folder: ${parentPath}`,
-								folderError,
-							);
-						}
+						} catch (folderError) {}
 					}
 
 					await app.app.vault.create(path, content);

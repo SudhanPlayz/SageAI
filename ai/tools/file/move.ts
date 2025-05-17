@@ -17,13 +17,6 @@ export function createMoveFileTool(
 				.describe("The new path where the file should be moved"),
 		}),
 		execute: async ({ sourcePath, targetPath }) => {
-			console.log(
-				"Executing moveFile tool with source:",
-				sourcePath,
-				"target:",
-				targetPath,
-			);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "moveFile",

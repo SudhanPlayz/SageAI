@@ -18,7 +18,6 @@ export const SummarizeCommand: SageCommand = {
 	name: "Summarize",
 	editorCallback: async (app, editor, view) => {
 		if (!view || !view.file) {
-			console.log("[SummarizeCommand] No active view or file found");
 			return;
 		}
 
@@ -28,7 +27,6 @@ export const SummarizeCommand: SageCommand = {
 		}
 
 		if (!textToSummarize.trim()) {
-			console.log("[SummarizeCommand] No text to summarize");
 			return;
 		}
 

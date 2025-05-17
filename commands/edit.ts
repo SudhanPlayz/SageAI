@@ -72,9 +72,7 @@ class PromptModal extends Modal {
 			this.buttonEl.disabled = !this.prompt.trim();
 			this.updateCharCount();
 
-			this.textarea.style.height = "auto";
-			this.textarea.style.height =
-				Math.min(this.textarea.scrollHeight, 150) + "px";
+			this.textarea.classList.add("edit-prompt-input");
 		});
 
 		// Add example prompts if in generate mode
@@ -120,7 +118,7 @@ class PromptModal extends Modal {
 			text: "Processing your request...",
 			cls: "loading-text",
 		});
-		this.loadingEl.style.display = "none";
+		this.loadingEl.classList.add("hidden");
 
 		buttonContainer.createEl("div", {
 			text: "Press Enter to submit",
@@ -130,7 +128,7 @@ class PromptModal extends Modal {
 		this.errorEl = doc.createEl("div", {
 			cls: "error-message",
 		});
-		this.errorEl.style.display = "none";
+		this.errorEl.classList.add("hidden");
 
 		this.buttonEl.addEventListener("click", async () =>
 			this.submitPrompt(app, selection, replace),
@@ -201,16 +199,16 @@ class PromptModal extends Modal {
 					? "Generate"
 					: "Edit",
 		);
-		this.loadingEl.style.display = isLoading ? "block" : "none";
+		this.loadingEl.classList.toggle("hidden", isLoading);
 	}
 
 	private showError(message: string) {
 		this.errorEl.setText(message);
-		this.errorEl.style.display = "block";
+		this.errorEl.classList.remove("hidden");
 	}
 
 	private hideError() {
-		this.errorEl.style.display = "none";
+		this.errorEl.classList.add("hidden");
 	}
 
 	private showSuccessNotification() {

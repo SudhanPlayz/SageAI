@@ -29,15 +29,6 @@ export function createGrepFilesTool(
 				),
 		}),
 		execute: async ({ pattern, caseSensitive = false, filePattern }) => {
-			console.log(
-				"Executing grepFiles tool with pattern:",
-				pattern,
-				"caseSensitive:",
-				caseSensitive,
-				"filePattern:",
-				filePattern,
-			);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "grepFiles",
@@ -67,10 +58,6 @@ export function createGrepFilesTool(
 					);
 					files = files.filter((file) => regex.test(file.path));
 				}
-
-				console.log(
-					`Searching through ${files.length} files for pattern: ${pattern}`,
-				);
 
 				const patternRegex = new RegExp(
 					pattern,

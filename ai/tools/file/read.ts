@@ -14,8 +14,6 @@ export function createReadFileTool(
 			path: z.string().describe("The path to the file to read"),
 		}),
 		execute: async ({ path }) => {
-			console.log("Executing readFile tool with path:", path);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "readFile",

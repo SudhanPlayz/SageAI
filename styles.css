@@ -1386,7 +1386,7 @@
 }
 
 .modal-description {
-	margin: 0 0 16px 0;
+	margin-bottom: 1rem;
 	color: #a0a0a0;
 	font-size: 14px;
 	line-height: 1.5;
@@ -1415,7 +1415,7 @@
 }
 
 .error-message {
-	margin-top: 16px;
+	margin-top: 1rem;
 	padding: 12px 16px;
 	color: #e05050;
 	background-color: rgba(224, 80, 80, 0.1);
@@ -1423,9 +1423,7 @@
 	border-radius: 4px;
 	font-size: 14px;
 	animation: fade-in 0.3s ease;
-	display: flex;
-	align-items: center;
-	gap: 8px;
+	display: none;
 }
 
 .error-message::before {
@@ -1446,88 +1444,42 @@
 
 /* Example prompts suggestions */
 .prompt-suggestions {
-	margin-top: 6px;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 6px;
+	gap: 8px;
+	margin-bottom: 1rem;
 }
 
 .prompt-suggestion {
-	background-color: rgba(88, 101, 242, 0.1);
-	border: 1px solid rgba(88, 101, 242, 0.2);
-	color: #a0a0a0;
-	font-size: 12px;
-	padding: 4px 8px;
-	border-radius: 12px;
+	padding: 6px 12px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
 	cursor: pointer;
 	transition: all 0.2s ease;
-	white-space: nowrap;
 }
 
 .prompt-suggestion:hover {
-	background-color: rgba(88, 101, 242, 0.2);
-	border-color: rgba(88, 101, 242, 0.3);
-	color: #e0e0e0;
+	background: var(--background-modifier-hover);
 }
 
 /* Success notification */
 .success-notification {
 	position: fixed;
-	top: 20px;
+	bottom: 20px;
 	right: 20px;
-	background-color: rgba(21, 23, 31, 0.95);
-	border-left: 3px solid #56b45d;
+	padding: 12px 24px;
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
 	border-radius: 4px;
-	padding: 12px 16px;
-	color: #e0e0e0;
-	font-size: 14px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	z-index: 1000;
-	animation: notification-slide-in 0.3s
-		cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-
-.success-notification::before {
-	content: "✓";
-	background-color: #56b45d;
-	color: white;
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 12px;
-	flex-shrink: 0;
-}
-
-@keyframes notification-slide-in {
-	from {
-		opacity: 0;
-		transform: translateX(20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateX(0);
-	}
-}
-
-@keyframes notification-slide-out {
-	from {
-		opacity: 1;
-		transform: translateX(0);
-	}
-	to {
-		opacity: 0;
-		transform: translateX(20px);
-	}
+	opacity: 1;
+	transition: opacity 0.3s ease;
 }
 
 .success-notification.hiding {
-	animation: notification-slide-out 0.3s forwards;
+	opacity: 0;
 }
 
 /* Global loading indicator */
@@ -1775,4 +1727,380 @@
 /* Add this near the top of the file, we don't need to see the full file content */
 .sage-hide-thought-process .sage-thought-process {
 	display: none !important;
+}
+
+/* Modal and Input Styles */
+.modal-description {
+	margin-bottom: 1rem;
+}
+
+.input-container {
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.edit-prompt-input {
+	width: 100%;
+	min-height: 60px;
+	max-height: 150px;
+	padding: 8px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	resize: none;
+	font-family: inherit;
+}
+
+.prompt-suggestions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 1rem;
+}
+
+.prompt-suggestion {
+	padding: 6px 12px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.prompt-suggestion:hover {
+	background: var(--background-modifier-hover);
+}
+
+.button-container {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.edit-button {
+	padding: 8px 16px;
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.edit-button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.loading-text {
+	color: var(--text-muted);
+}
+
+.shortcut-hint {
+	color: var(--text-muted);
+	font-size: 0.9em;
+}
+
+.error-message {
+	color: var(--text-error);
+	margin-top: 1rem;
+	display: none;
+}
+
+/* Success Notification */
+.success-notification {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	padding: 12px 24px;
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
+	opacity: 1;
+	transition: opacity 0.3s ease;
+}
+
+.success-notification.hiding {
+	opacity: 0;
+}
+
+/* Typing Animation */
+.typing-text span {
+	display: inline-block;
+	animation: fadeIn 0.005s ease-in forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Funding Section */
+.sage-funding {
+	margin-top: 1.5rem;
+	padding: 1.25rem;
+	border-radius: 10px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+.sage-funding:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.sage-funding-container {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.sage-funding-header {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin-bottom: 1rem;
+	padding-bottom: 0.75rem;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.sage-funding-header .lucide-sparkles {
+	width: 24px;
+	height: 24px;
+	color: var(--text-accent);
+	animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(1.1);
+		opacity: 0.8;
+	}
+}
+
+.sage-funding-title {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--text-normal);
+	background: linear-gradient(
+		45deg,
+		var(--text-accent),
+		var(--text-accent-hover)
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.sage-funding-description {
+	margin: 0 0 1.25rem;
+	color: var(--text-muted);
+	line-height: 1.5;
+	font-size: 0.95rem;
+}
+
+.sage-funding-buttons {
+	display: flex;
+	gap: 0.75rem;
+	margin-bottom: 1.25rem;
+}
+
+.sage-funding-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.625rem 1rem;
+	border-radius: 6px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+	flex: 1;
+	justify-content: center;
+	font-size: 0.95rem;
+}
+
+.sage-funding-button:hover {
+	text-decoration: none;
+	transform: translateY(-1px);
+}
+
+.sage-funding-button:active {
+	transform: translateY(0);
+}
+
+.sage-funding-button-primary {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	box-shadow: 0 2px 6px rgba(var(--interactive-accent-rgb), 0.2);
+}
+
+.sage-funding-button-primary:hover {
+	background: var(--interactive-accent-hover);
+	box-shadow: 0 3px 8px rgba(var(--interactive-accent-rgb), 0.3);
+}
+
+.sage-funding-button-secondary {
+	background: var(--background-primary);
+	color: var(--text-normal);
+	border: 1px solid var(--background-modifier-border);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.sage-funding-button-secondary:hover {
+	background: var(--background-modifier-hover);
+	border-color: var(--interactive-accent);
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.sage-funding-button .button-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	transition: transform 0.3s ease;
+}
+
+.sage-funding-button:hover .button-icon {
+	transform: scale(1.1);
+}
+
+.sage-funding-button .button-icon svg {
+	width: 18px;
+	height: 18px;
+}
+
+.sage-funding-button-shine {
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.2),
+		transparent
+	);
+	transition: 0.5s;
+}
+
+.sage-funding-button:hover .sage-funding-button-shine {
+	left: 100%;
+}
+
+.sage-funding-footer {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+.sage-funding-footer .footer-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	color: var(--text-accent);
+	animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-3px);
+	}
+}
+
+.sage-funding-footer .footer-icon svg {
+	width: 18px;
+	height: 18px;
+}
+
+.sage-funding-footer-text {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 0.9rem;
+	line-height: 1.4;
+}
+
+/* Chat Interface */
+.sage-input-container {
+	position: relative;
+	flex: 1;
+}
+
+.sage-input {
+	width: 100%;
+	min-height: 40px;
+	max-height: 120px;
+	padding: 8px 12px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	resize: none;
+	font-family: inherit;
+	background: var(--background-primary);
+	color: var(--text-normal);
+}
+
+.sage-input:focus {
+	outline: none;
+	border-color: var(--interactive-accent);
+}
+
+.sage-send-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 4px;
+	background: var(--background-secondary);
+	color: var(--text-muted);
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.sage-send-button.active {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+.sage-send-button.loading {
+	cursor: not-allowed;
+	opacity: 0.7;
+}
+
+.sage-spin {
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }

@@ -16,7 +16,10 @@ export const ObsidianMarkdownContent: React.FC<
 	useEffect(() => {
 		if (!containerRef.current || !content || !app) return;
 
-		containerRef.current.innerHTML = "";
+		// Clear the container using DOM API
+		while (containerRef.current.firstChild) {
+			containerRef.current.removeChild(containerRef.current.firstChild);
+		}
 
 		try {
 			const processedContent = content
@@ -36,10 +39,13 @@ export const ObsidianMarkdownContent: React.FC<
 				error,
 			);
 
-			containerRef.current.innerHTML = content
-				.split("\n")
-				.map((line) => `<div>${line || "&nbsp;"}</div>`)
-				.join("");
+			// Create a fallback display using DOM API
+			const lines = content.split("\n");
+			lines.forEach((line) => {
+				const div = document.createElement("div");
+				div.textContent = line || " ";
+				containerRef.current?.appendChild(div);
+			});
 		}
 	}, [content, app]);
 

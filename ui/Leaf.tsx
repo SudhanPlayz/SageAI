@@ -640,10 +640,7 @@ export const Leaf = () => {
 						value={message}
 						onChange={(e) => {
 							setMessage(e.target.value);
-
-							e.target.style.height = "auto";
-							e.target.style.height =
-								Math.min(e.target.scrollHeight, 120) + "px";
+							e.target.classList.add("sage-input");
 						}}
 						onKeyDown={handleKeyPress}
 						rows={1}
