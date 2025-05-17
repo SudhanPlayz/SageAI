@@ -4,22 +4,15 @@ export function enhancePromptWithEditorContext(
 	app: SageAI,
 	originalPrompt: string,
 ): string {
-	console.log(
-		"[enhancePromptWithEditorContext] Starting context enhancement",
-	);
 	const workspace = app.app.workspace;
 
 	const activeFile = workspace.getActiveFile();
-	console.log("[enhancePromptWithEditorContext] Active file:", activeFile);
 
 	if (!activeFile) {
-		console.log("[enhancePromptWithEditorContext] No active file found");
 		return originalPrompt;
 	}
 
 	const editor = workspace.activeEditor?.editor;
-	console.log("[enhancePromptWithEditorContext] Editor:", editor);
-
 	const contextInfo = [];
 
 	contextInfo.push(`Current file: ${activeFile.path}`);
@@ -49,9 +42,6 @@ export function enhancePromptWithEditorContext(
 	const contextString = contextInfo.join("\n");
 
 	const enhancedPrompt = `Context Information:\n${contextString}\n\nUser Query: ${originalPrompt}`;
-	console.log(
-		"[enhancePromptWithEditorContext] Enhanced prompt:",
-		enhancedPrompt,
-	);
+
 	return enhancedPrompt;
 }

@@ -20,8 +20,6 @@ export function createListFolderTool(
 				),
 		}),
 		execute: async ({ path }) => {
-			console.log("Executing listFolder tool with path:", path);
-
 			const normalizedPath = path === "/" ? "" : path;
 
 			const toolEvent: ToolEvent = {

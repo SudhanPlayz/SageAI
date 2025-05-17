@@ -15,8 +15,6 @@ export function createDeleteFolderTool(
 			path: z.string().describe("The path of the folder to delete"),
 		}),
 		execute: async ({ path }) => {
-			console.log("Executing deleteFolder tool with path:", path);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "deleteFolder",

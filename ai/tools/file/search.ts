@@ -17,8 +17,6 @@ export function createSearchFilesTool(
 				.describe("The search query to find files in the vault"),
 		}),
 		execute: async ({ query }) => {
-			console.log("Executing searchFiles tool with query:", query);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "searchFiles",
@@ -32,8 +30,6 @@ export function createSearchFilesTool(
 
 			try {
 				const files = app.app.vault.getMarkdownFiles();
-				console.log("Retrieved files from vault:", files.length);
-
 				const searchTerms = query
 					.toLowerCase()
 					.split(/\s+/)
@@ -52,11 +48,6 @@ export function createSearchFilesTool(
 					.filter((result) => result.matches > 0)
 					.sort((a, b) => b.matches - a.matches)
 					.slice(0, 20);
-
-				console.log(
-					"Filtered files for search results:",
-					results.length,
-				);
 
 				try {
 					localStorage.setItem(

@@ -24,13 +24,7 @@ export function processAIResponse(
 	storage: Storage,
 	callbacks?: StreamCallbacks,
 ): Promise<AssistantResponse> {
-	console.log(
-		"[processAIResponse] Starting with conversation ID:",
-		conversation.id,
-	);
 	let fullResponse = "";
-
-	console.log("[processAIResponse] Initialized response object");
 
 	return new Promise<AssistantResponse>((resolve) => {
 		const processResponse = async () => {
@@ -43,7 +37,6 @@ export function processAIResponse(
 				}
 
 				if (result.textStream) {
-					console.log("[processAIResponse] Processing text stream");
 					try {
 						for await (const chunk of result.textStream) {
 							if (typeof chunk === "string") {
@@ -51,9 +44,6 @@ export function processAIResponse(
 								callbacks?.onToken?.(chunk);
 							}
 						}
-						console.log(
-							"[processAIResponse] Text stream processing complete",
-						);
 					} catch (streamError) {
 						console.error(
 							"[processAIResponse] Error processing text stream:",
@@ -62,7 +52,6 @@ export function processAIResponse(
 					}
 				}
 
-				console.log("[processAIResponse] Processing tool events");
 				try {
 					processToolEvents(result, allToolEvents);
 				} catch (toolError) {
@@ -72,7 +61,6 @@ export function processAIResponse(
 					);
 				}
 
-				console.log("[processAIResponse] Creating assistant message");
 				const assistantMessage = createAssistantMessage(
 					fullResponse,
 					allToolEvents,
@@ -84,7 +72,6 @@ export function processAIResponse(
 				};
 
 				try {
-					console.log("[processAIResponse] Saving conversation");
 					conversation.messages.push(messageWithMetadata);
 					await storage.saveConversation(conversation);
 				} catch (saveError) {
@@ -96,9 +83,6 @@ export function processAIResponse(
 
 				try {
 					if (callbacks?.onComplete) {
-						console.log(
-							"[processAIResponse] Calling onComplete callback",
-						);
 						callbacks.onComplete(assistantMessage);
 					}
 				} catch (callbackError) {
@@ -108,9 +92,6 @@ export function processAIResponse(
 					);
 				}
 
-				console.log(
-					"[processAIResponse] Resolving with complete response",
-				);
 				resolve({
 					text: assistantMessage.content,
 					toolEvents: allToolEvents,
@@ -196,7 +177,6 @@ function createAssistantMessage(
 	};
 
 	if (!fullResponse || fullResponse.trim() === "") {
-		console.log("Empty response detected, using fallback");
 		assistantMessage.content = generateFallbackResponse(allToolEvents);
 	}
 

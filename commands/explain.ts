@@ -26,7 +26,8 @@ const typeText = (element: HTMLElement, text: string) => {
 	chars.forEach((char, index) => {
 		const span = element.createSpan();
 		span.setText(char);
-		span.style.animationDelay = `${index * 0.005}s`;
+		span.classList.add("typing-char");
+		span.style.setProperty("--delay", `${index * 0.005}s`);
 	});
 };
 

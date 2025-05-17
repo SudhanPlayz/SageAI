@@ -135,10 +135,6 @@ export default class SageAI extends Plugin {
 		}
 
 		this.addSettingTab(new SettingsTab(this.app, this));
-
-		this.registerDomEvent(document, "click", (evt: MouseEvent) => {
-			console.log("click", evt);
-		});
 	}
 
 	onunload() {}

@@ -14,8 +14,6 @@ export function createDeleteFileTool(
 			path: z.string().describe("The path of the file to delete"),
 		}),
 		execute: async ({ path }) => {
-			console.log("Executing deleteFile tool with path:", path);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "deleteFile",

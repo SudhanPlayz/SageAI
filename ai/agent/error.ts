@@ -10,13 +10,10 @@ export function handleChatError(
 	callbacks?: StreamCallbacks,
 	toolEvents: ToolEvent[] = [],
 ): AssistantResponse {
-	console.log("[handleChatError] Processing error");
 	const errorMessage =
 		error instanceof Error ? error.message : "Unknown error occurred";
-	console.error("[handleChatError] Error details:", errorMessage, error);
 
 	if (callbacks?.onError) {
-		console.log("[handleChatError] Calling error callback");
 		callbacks.onError(
 			error instanceof Error ? error : new Error(String(error)),
 		);
@@ -28,14 +25,10 @@ export function handleChatError(
 		role: "assistant" as const,
 	};
 
-	console.log("[handleChatError] Adding error message to conversation");
 	conversation.messages.push(assistantErrorMessage);
 	storage.saveConversation(conversation);
 
 	if (callbacks?.onComplete) {
-		console.log(
-			"[handleChatError] Calling onComplete callback with error message",
-		);
 		callbacks.onComplete(assistantErrorMessage);
 	}
 

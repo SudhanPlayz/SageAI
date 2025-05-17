@@ -16,8 +16,6 @@ export function createCreateFolderTool(
 				.describe("The path where the folder should be created"),
 		}),
 		execute: async ({ path }) => {
-			console.log("Executing createFolder tool with path:", path);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "createFolder",

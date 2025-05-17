@@ -17,13 +17,6 @@ export function createRenameFileTool(
 			newPath: z.string().describe("The new path for the file"),
 		}),
 		execute: async ({ oldPath, newPath }) => {
-			console.log(
-				"Executing renameFile tool with oldPath:",
-				oldPath,
-				"newPath:",
-				newPath,
-			);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "renameFile",

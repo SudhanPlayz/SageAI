@@ -18,13 +18,6 @@ export function createMoveFolderTool(
 				.describe("The destination path for the folder"),
 		}),
 		execute: async ({ path, targetPath }) => {
-			console.log(
-				"Executing moveFolder tool with path:",
-				path,
-				"targetPath:",
-				targetPath,
-			);
-
 			const toolEvent: ToolEvent = {
 				type: "toolCall",
 				tool: "moveFolder",
