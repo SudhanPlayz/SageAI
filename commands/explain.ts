@@ -11,8 +11,15 @@ const explain = async (
 ) => {
 	const prompt = EXPLAIN_PROMPT.replace("{text}", text);
 
+	const model = getModel(settings);
+	if (!model) {
+		throw new Error(
+			"No model configured. Please set up a model in settings.",
+		);
+	}
+
 	generateText({
-		model: getModel(settings),
+		model,
 		prompt: prompt,
 		onStepFinish: (step) => {
 			onProgress(step.text);

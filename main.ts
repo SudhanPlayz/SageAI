@@ -19,6 +19,11 @@ export enum APIProvider {
 	OPENROUTER = "openrouter",
 	GOOGLE_GENAI = "google-genai",
 	OLLAMA = "ollama",
+	GROQ = "groq",
+	ANTHROPIC = "anthropic",
+	MISTRAL = "mistral",
+	OPENAI = "openai",
+	XAI = "xai",
 }
 
 export interface SageAISettings {

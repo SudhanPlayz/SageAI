@@ -12,9 +12,16 @@ const edit = async (app: SageAI, prompt: string, selected: string) => {
 			)
 		: GENERATE_PROMPT.replace("{prompt}", prompt);
 
+	const model = getModel(app.settings);
+	if (!model) {
+		throw new Error(
+			"No model configured. Please set up a model in settings.",
+		);
+	}
+
 	try {
 		const { text: edited } = await generateText({
-			model: getModel(app.settings),
+			model,
 			prompt: pt,
 		});
 
@@ -75,7 +82,6 @@ class PromptModal extends Modal {
 			this.textarea.classList.add("edit-prompt-input");
 		});
 
-		// Add example prompts if in generate mode
 		if (this.isGenerateMode) {
 			const suggestionContainer = doc.createEl("div", {
 				cls: "prompt-suggestions",

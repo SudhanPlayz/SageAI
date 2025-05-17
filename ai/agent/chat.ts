@@ -64,7 +64,6 @@ export const chatWithAgent = async (
 		);
 
 		const response = await processAIResponse(
-			//todo: fix this
 			result as any,
 			allToolEvents,
 			conversation,
