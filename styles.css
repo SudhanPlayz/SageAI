@@ -1901,6 +1901,7 @@
 		var(--text-accent),
 		var(--text-accent-hover)
 	);
+	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -1952,6 +1953,7 @@
 .sage-funding-button-primary:hover {
 	background: var(--interactive-accent-hover);
 	box-shadow: 0 3px 8px rgba(var(--interactive-accent-rgb), 0.3);
+	color: white;
 }
 
 .sage-funding-button-secondary {

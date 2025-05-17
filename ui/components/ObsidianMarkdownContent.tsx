@@ -16,7 +16,6 @@ export const ObsidianMarkdownContent: React.FC<
 	useEffect(() => {
 		if (!containerRef.current || !content || !app) return;
 
-		// Clear the container using DOM API
 		while (containerRef.current.firstChild) {
 			containerRef.current.removeChild(containerRef.current.firstChild);
 		}
@@ -39,7 +38,6 @@ export const ObsidianMarkdownContent: React.FC<
 				error,
 			);
 
-			// Create a fallback display using DOM API
 			const lines = content.split("\n");
 			lines.forEach((line) => {
 				const div = document.createElement("div");

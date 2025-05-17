@@ -6,8 +6,15 @@ import { SageAISettings, SageCommand } from "main";
 const summarize = async (settings: SageAISettings, text: string) => {
 	const prompt = SUMMARIZE_PROMPT.replace("{text}", text);
 
+	const model = getModel(settings);
+	if (!model) {
+		throw new Error(
+			"No model configured. Please set up a model in settings.",
+		);
+	}
+
 	const { text: summary } = await generateText({
-		model: getModel(settings),
+		model,
 		prompt: prompt,
 	});
 	return summary;

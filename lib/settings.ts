@@ -22,6 +22,11 @@ export class SettingsTab extends PluginSettingTab {
 					.addOption(APIProvider.OPENROUTER, "OpenRouter")
 					.addOption(APIProvider.GOOGLE_GENAI, "Google Gemini")
 					.addOption(APIProvider.OLLAMA, "Ollama")
+					.addOption(APIProvider.GROQ, "Groq")
+					.addOption(APIProvider.ANTHROPIC, "Anthropic")
+					.addOption(APIProvider.MISTRAL, "Mistral")
+					.addOption(APIProvider.OPENAI, "OpenAI")
+					.addOption(APIProvider.XAI, "XAI")
 					.setValue(this.plugin.settings.apiProvider)
 					.onChange(async (value) => {
 						this.plugin.settings.apiProvider = value as APIProvider;
@@ -90,7 +95,6 @@ export class SettingsTab extends PluginSettingTab {
 		const fundingEl = containerEl.createDiv("sage-funding");
 		const fundingContainer = fundingEl.createDiv("sage-funding-container");
 
-		// Header
 		const header = fundingContainer.createDiv("sage-funding-header");
 		const sparklesIcon = header.createEl("div", {
 			cls: "lucide lucide-sparkles",
@@ -109,18 +113,15 @@ export class SettingsTab extends PluginSettingTab {
 			cls: "sage-funding-title",
 		});
 
-		// Description
 		fundingContainer.createEl("p", {
 			text: "Love using Sage AI? Here's how you can help us grow:",
 			cls: "sage-funding-description",
 		});
 
-		// Buttons container
 		const buttonsContainer = fundingContainer.createDiv(
 			"sage-funding-buttons",
 		);
 
-		// Sponsor button
 		const sponsorButton = buttonsContainer.createEl("a", {
 			href: "https://github.com/sponsors/SudhanPlayz",
 			attr: {
@@ -140,7 +141,6 @@ export class SettingsTab extends PluginSettingTab {
 		sponsorButton.createSpan({ text: "Become a Sponsor" });
 		sponsorButton.createEl("span", { cls: "sage-funding-button-shine" });
 
-		// Star button
 		const starButton = buttonsContainer.createEl("a", {
 			href: "https://github.com/SudhanPlayz/SageAI",
 			attr: {
@@ -158,7 +158,6 @@ export class SettingsTab extends PluginSettingTab {
 		starButton.createSpan({ text: "Star on GitHub" });
 		starButton.createEl("span", { cls: "sage-funding-button-shine" });
 
-		// Footer
 		const footer = fundingContainer.createDiv("sage-funding-footer");
 		const footerIcon = footer.createEl("div", { cls: "footer-icon" });
 		footerIcon.innerHTML = `
@@ -171,7 +170,6 @@ export class SettingsTab extends PluginSettingTab {
 			cls: "sage-funding-footer-text",
 		});
 
-		// Add hover effects for buttons
 		const buttons = fundingEl.querySelectorAll("a");
 		buttons.forEach((button) => {
 			button.addEventListener("mouseover", () => {
