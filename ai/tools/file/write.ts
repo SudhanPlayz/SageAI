@@ -39,9 +39,7 @@ export function createWriteFileTool(
 						parentPath &&
 						!app.app.vault.getAbstractFileByPath(parentPath)
 					) {
-						try {
-							await app.app.vault.createFolder(parentPath);
-						} catch (folderError) {}
+						await app.app.vault.createFolder(parentPath);
 					}
 
 					await app.app.vault.create(path, content);
