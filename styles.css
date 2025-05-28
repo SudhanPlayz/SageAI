@@ -1194,650 +1194,150 @@
 }
 
 /* Edit/Generate Modal Styling */
+.edit-prompt-input,
+.input-container,
+.button-container,
+.edit-button,
+.loading-text,
+.shortcut-hint,
+.error-message,
+.prompt-suggestions,
+.prompt-suggestion,
+.success-notification {
+	all: unset;
+}
+
 .edit-prompt-input {
 	width: 100%;
-	padding: 12px 16px;
-	background-color: #272935;
-	color: #e0e0e0;
+	min-height: 48px;
+	max-height: 120px;
+	padding: 10px 14px;
 	border: 1px solid #3c3f51;
-	border-radius: 12px;
-	font-family: inherit;
+	border-radius: 6px;
+	background: #272935;
+	color: #e0e0e0;
 	font-size: 15px;
-	transition: all 0.2s ease;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
 	resize: none;
-	min-height: 80px;
-	max-height: 150px;
-	overflow-y: auto;
-	line-height: 1.4;
+	font-family: inherit;
+	box-sizing: border-box;
+	transition:
+		border-color 0.15s,
+		background 0.15s;
 }
-
 .edit-prompt-input:focus {
-	outline: none;
 	border-color: #5865f2;
-	box-shadow:
-		0 0 0 2px rgba(88, 101, 242, 0.2),
-		0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	outline: none;
+	background: #23243a;
 }
-
 .edit-prompt-input::placeholder {
-	color: rgba(142, 142, 142, 0.7);
+	color: #8e8e8e;
 	font-style: italic;
 }
-
 .input-container {
 	width: 100%;
-	margin: 0 0 20px 0;
+	margin-bottom: 14px;
 	position: relative;
 }
-
 .input-container::after {
 	content: attr(data-char-count);
 	position: absolute;
-	bottom: -18px;
+	bottom: -16px;
 	right: 2px;
 	font-size: 11px;
 	color: #8e8e8e;
-	opacity: 0.8;
+	opacity: 0.7;
 }
-
 .button-container {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	gap: 14px;
+	gap: 10px;
 	width: 100%;
 }
-
 .edit-button {
-	background-color: #5865f2;
-	color: white;
+	padding: 10px 22px;
+	background: #5865f2;
+	color: #fff;
 	border: none;
-	border-radius: 10px;
-	padding: 12px 24px;
+	border-radius: 6px;
 	font-size: 15px;
 	font-weight: 500;
 	cursor: pointer;
-	transition: all 0.2s ease;
-	flex-grow: 1;
-	max-width: 150px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	position: relative;
-	overflow: hidden;
-}
-
-.edit-button::after {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: -100%;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		rgba(255, 255, 255, 0.2),
-		transparent
-	);
-	transition: all 0.6s ease;
-}
-
-.edit-button:hover {
-	background-color: #4752c4;
-	transform: translateY(-1px);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.edit-button:hover::after {
-	left: 100%;
-}
-
-.edit-button:active {
-	transform: translateY(1px);
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-}
-
-.edit-button:disabled {
-	background-color: #3c3f51;
-	cursor: not-allowed;
-	opacity: 0.7;
+	transition: background 0.15s;
 	box-shadow: none;
 }
-
-.loading-text {
-	font-size: 14px;
-	color: #a0a0a0;
-	animation: loading-pulse 1.5s infinite;
-	flex-grow: 1;
-	text-align: right;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: 6px;
-}
-
-.loading-text::before {
-	content: "";
-	display: inline-block;
-	width: 12px;
-	height: 12px;
-	border: 2px solid rgba(88, 101, 242, 0.3);
-	border-top-color: #5865f2;
-	border-radius: 50%;
-	animation: spin 1s linear infinite;
-}
-
-@keyframes loading-pulse {
-	0%,
-	100% {
-		opacity: 0.7;
-	}
-	50% {
-		opacity: 1;
-	}
-}
-
-/* Modal overrides for Sage AI styling */
-.modal {
-	background-color: #15171f;
-	border-radius: 12px;
-	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-	border: 1px solid #2c2e3a;
-	animation: modal-appear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	max-width: 500px;
-	width: 90%;
-}
-
-@keyframes modal-appear {
-	from {
-		opacity: 0;
-		transform: translateY(10px) scale(0.98);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0) scale(1);
-	}
-}
-
-.modal .modal-close-button {
-	color: #8e8e8e;
-	transition: all 0.2s ease;
-}
-
-.modal .modal-close-button:hover {
-	color: #e0e0e0;
-	background-color: rgba(255, 255, 255, 0.1);
-	border-radius: 50%;
-}
-
-.modal .modal-title {
-	color: #e0e0e0;
-	font-size: 18px;
-	margin-bottom: 16px;
-	padding-bottom: 12px;
-	border-bottom: 1px solid rgba(88, 101, 242, 0.2);
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
-
-.modal-content {
-	padding: 20px 24px;
-}
-
-.modal-description {
-	margin-bottom: 1rem;
-	color: #a0a0a0;
-	font-size: 14px;
-	line-height: 1.5;
-	position: relative;
-	padding-left: 24px;
-}
-
-.modal-description::before {
-	content: "💡";
-	position: absolute;
-	left: 0;
-	top: 0;
-	font-size: 16px;
-}
-
-.shortcut-hint {
-	font-size: 12px;
-	color: #8e8e8e;
-	opacity: 0.8;
-	text-align: right;
-	flex-grow: 1;
-	padding: 4px 8px;
-	background-color: rgba(30, 32, 43, 0.4);
-	border-radius: 4px;
-	white-space: nowrap;
-}
-
-.error-message {
-	margin-top: 1rem;
-	padding: 12px 16px;
-	color: #e05050;
-	background-color: rgba(224, 80, 80, 0.1);
-	border-left: 3px solid #e05050;
-	border-radius: 4px;
-	font-size: 14px;
-	animation: fade-in 0.3s ease;
-	display: none;
-}
-
-.error-message::before {
-	content: "⚠️";
-	font-size: 14px;
-}
-
-/* Focus styling for accessibility */
-.edit-prompt-input:focus-visible {
-	outline: 2px solid #5865f2;
-	outline-offset: 1px;
-}
-
-.edit-button:focus-visible {
-	outline: 2px solid white;
-	outline-offset: 2px;
-}
-
-/* Example prompts suggestions */
-.prompt-suggestions {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	margin-bottom: 1rem;
-}
-
-.prompt-suggestion {
-	padding: 6px 12px;
-	background: var(--background-secondary);
-	border: 1px solid var(--background-modifier-border);
-	border-radius: 4px;
-	cursor: pointer;
-	transition: all 0.2s ease;
-}
-
-.prompt-suggestion:hover {
-	background: var(--background-modifier-hover);
-}
-
-/* Success notification */
-.success-notification {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	padding: 12px 24px;
-	background: var(--background-primary);
-	border: 1px solid var(--background-modifier-border);
-	border-radius: 4px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-	z-index: 1000;
-	opacity: 1;
-	transition: opacity 0.3s ease;
-}
-
-.success-notification.hiding {
-	opacity: 0;
-}
-
-/* Global loading indicator */
-.sage-global-loader {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 3px;
-	z-index: 1000;
-	background: linear-gradient(
-		90deg,
-		rgba(88, 101, 242, 0.2),
-		rgba(88, 101, 242, 0.1)
-	);
-	overflow: hidden;
-}
-
-.sage-global-loader::after {
-	content: "";
-	position: absolute;
-	left: -100%;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(90deg, transparent, #5865f2, transparent);
-	animation: loading-bar 1.5s infinite ease;
-}
-
-@keyframes loading-bar {
-	0% {
-		left: -100%;
-	}
-	50% {
-		left: 100%;
-	}
-	100% {
-		left: 100%;
-	}
-}
-
-.sage-loader-content {
-	position: absolute;
-	top: 8px;
-	right: 16px;
-	background-color: rgba(21, 23, 31, 0.85);
-	border: 1px solid rgba(88, 101, 242, 0.3);
-	border-radius: 12px;
-	padding: 6px 12px;
-	display: flex;
-	align-items: center;
-	gap: 6px;
-	backdrop-filter: blur(4px);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-	animation: fade-slide-in 0.3s ease;
-	z-index: 1000;
-}
-
-.sage-loader-icon {
-	color: #5865f2;
-	animation: spin 1.5s linear infinite;
-}
-
-.sage-loader-text {
-	font-size: 12px;
-	color: #e0e0e0;
-	white-space: nowrap;
-}
-
-/* Header status indicator */
-.sage-header-status {
-	display: flex;
-	align-items: center;
-	gap: 6px;
-	margin-left: 12px;
-	font-size: 12px;
-	color: #5865f2;
-	opacity: 0.9;
-	animation: fade-in 0.3s ease;
-}
-
-.sage-pulse {
-	animation: pulse-glow 2s infinite ease-in-out;
-}
-
-.sage-spin {
-	animation: spin 1.5s linear infinite;
-}
-
-/* Activity tracker */
-.sage-activity-tracker {
-	margin-bottom: 8px;
-	border-radius: 8px;
-	overflow: hidden;
-	background-color: rgba(30, 32, 43, 0.6);
-	border: 1px solid rgba(88, 101, 242, 0.2);
-	padding: 4px 0;
-	animation: fade-slide-in 0.3s ease;
-}
-
-.sage-activity-step {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	padding: 6px 12px;
-	position: relative;
-}
-
-.sage-activity-icon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 24px;
-	height: 24px;
-	background-color: rgba(88, 101, 242, 0.15);
-	border-radius: 50%;
-	color: #5865f2;
-}
-
-.sage-activity-label {
-	font-size: 13px;
-	color: #e0e0e0;
-}
-
-/* Enhance send button during loading */
-.sage-send-button.loading {
-	background-color: #272935;
-	border-color: #5865f2;
-	cursor: not-allowed;
-}
-
-/* Make typing indicator more visible */
-.sage-typing-indicator {
-	padding: 10px 16px;
-	background-color: rgba(39, 41, 53, 0.9);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.sage-typing-indicator span {
-	height: 8px;
-	width: 8px;
-}
-
-/* Additional animation for loading state */
-@keyframes spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-@keyframes pulse-glow {
-	0%,
-	100% {
-		opacity: 0.7;
-		transform: scale(1);
-	}
-	50% {
-		opacity: 1;
-		transform: scale(1.1);
-		box-shadow: 0 0 8px rgba(88, 101, 242, 0.6);
-	}
-}
-
-@keyframes fade-slide-in {
-	from {
-		opacity: 0;
-		transform: translateY(-4px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-/* Add subtle indication when container is in loading state */
-.sage-container.is-loading .sage-conversation {
-	background-image:
-		radial-gradient(
-			circle at 25% 25%,
-			rgba(88, 101, 242, 0.08) 0%,
-			transparent 50%
-		),
-		radial-gradient(
-			circle at 75% 75%,
-			rgba(88, 101, 242, 0.05) 0%,
-			transparent 50%
-		);
-	transition: background-image 0.3s ease;
-}
-
-/* Make the minimal activity indicators more visible */
-.sage-activity-minimal {
-	background-color: rgba(30, 32, 43, 0.6);
-	border: 1px solid rgba(88, 101, 242, 0.2);
-	padding: 4px 10px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.sage-activity-minimal svg {
-	animation: pulse-glow 2s infinite ease-in-out;
-}
-
-/* Enhance status updates animations */
-.sage-status-update {
-	animation: status-slide-in 0.4s ease;
-}
-
-.sage-status-updates {
-	padding: 4px;
-	background-color: rgba(30, 32, 43, 0.4);
-	border-radius: 8px;
-	margin-bottom: 10px;
-}
-
-/* Animate streaming content */
-.sage-streaming-content {
-	animation: fade-in 0.6s ease;
-}
-
-/* Enhance tool operation styles */
-.sage-tool-operation {
-	height: 28px;
-	background-color: rgba(39, 41, 53, 0.7);
-	border: 1px solid rgba(60, 63, 81, 0.3);
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Show indication when message is loading */
-.sage-message.sage-loading {
-	animation: subtle-pulse 2s infinite ease-in-out;
-}
-
-@keyframes subtle-pulse {
-	0%,
-	100% {
-		opacity: 0.95;
-	}
-	50% {
-		opacity: 1;
-	}
-}
-
-/* Add this near the top of the file, we don't need to see the full file content */
-.sage-hide-thought-process .sage-thought-process {
-	display: none !important;
-}
-
-/* Modal and Input Styles */
-.modal-description {
-	margin-bottom: 1rem;
-}
-
-.input-container {
-	position: relative;
-	margin-bottom: 1rem;
-}
-
-.edit-prompt-input {
-	width: 100%;
-	min-height: 60px;
-	max-height: 150px;
-	padding: 8px;
-	border: 1px solid var(--background-modifier-border);
-	border-radius: 4px;
-	resize: none;
-	font-family: inherit;
-}
-
-.prompt-suggestions {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	margin-bottom: 1rem;
-}
-
-.prompt-suggestion {
-	padding: 6px 12px;
-	background: var(--background-secondary);
-	border: 1px solid var(--background-modifier-border);
-	border-radius: 4px;
-	cursor: pointer;
-	transition: all 0.2s ease;
-}
-
-.prompt-suggestion:hover {
-	background: var(--background-modifier-hover);
-}
-
-.button-container {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-}
-
-.edit-button {
-	padding: 8px 16px;
-	background: var(--interactive-accent);
-	color: var(--text-on-accent);
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: all 0.2s ease;
-}
-
 .edit-button:disabled {
-	opacity: 0.5;
+	background: #3c3f51;
+	color: #8e8e8e;
 	cursor: not-allowed;
 }
-
+.edit-button:hover:not(:disabled),
+.edit-button:focus-visible:not(:disabled) {
+	background: #4752c4;
+}
 .loading-text {
-	color: var(--text-muted);
+	font-size: 13px;
+	color: #888;
+	margin-left: auto;
 }
-
 .shortcut-hint {
-	color: var(--text-muted);
-	font-size: 0.9em;
+	font-size: 12px;
+	color: #8e8e8e;
+	margin-left: auto;
 }
-
 .error-message {
-	color: var(--text-error);
-	margin-top: 1rem;
+	color: #e05050;
+	background: none;
+	border-left: 2px solid #e05050;
+	padding: 8px 0 8px 8px;
+	font-size: 13px;
+	margin-top: 10px;
 	display: none;
 }
-
-/* Success Notification */
+.error-message:not(.hidden) {
+	display: block;
+}
+.prompt-suggestions {
+	display: flex;
+	gap: 6px;
+	margin-bottom: 10px;
+	flex-wrap: wrap;
+}
+.prompt-suggestion {
+	padding: 4px 10px;
+	background: #f3f3f3;
+	border: 1px solid #e0e0e0;
+	border-radius: 3px;
+	font-size: 13px;
+	color: #444;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.prompt-suggestion:hover {
+	background: #e8eafd;
+	color: #222;
+}
 .success-notification {
 	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	padding: 12px 24px;
-	background: var(--background-primary);
-	border: 1px solid var(--background-modifier-border);
-	border-radius: 4px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	bottom: 16px;
+	right: 16px;
+	padding: 10px 20px;
+	background: #23243a;
+	color: #e0e0e0;
+	border-radius: 5px;
+	font-size: 14px;
 	z-index: 1000;
 	opacity: 1;
-	transition: opacity 0.3s ease;
+	transition: opacity 0.2s;
+	border: 1px solid #3c3f51;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
-
 .success-notification.hiding {
 	opacity: 0;
 }
-
-/* Typing Animation */
-.typing-text span {
-	display: inline-block;
-	animation: fadeIn 0.005s ease-in forwards;
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+.modal-description {
+	color: #a0a0a0;
+	font-size: 14px;
+	margin-bottom: 12px;
 }
 
 /* Funding Section */

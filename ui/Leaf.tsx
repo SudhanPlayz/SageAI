@@ -18,17 +18,17 @@ import { useApp } from "hooks/app";
 import { StreamCallbacks, ToolEvent } from "ai/types";
 
 // Components
-import { GlobalLoadingIndicator } from "./components/GlobalLoadingIndicator";
-import { ActivityTracker } from "./components/ActivityTracker";
-import { HistoryPanel } from "./components/HistoryPanel";
-import { ObsidianMarkdownContent } from "./components/ObsidianMarkdownContent";
-import { ToolOperationIndicator } from "./components/ToolOperationIndicator";
+import { GlobalLoadingIndicator } from "ui/components/GlobalLoadingIndicator";
+import { ActivityTracker } from "ui/components/ActivityTracker";
+import { HistoryPanel } from "ui/components/HistoryPanel";
+import { ObsidianMarkdownContent } from "ui/components/ObsidianMarkdownContent";
+import { ToolOperationIndicator } from "ui/components/ToolOperationIndicator";
 
 // Types
-import { Message, StatusUpdate, Conversation } from "./types";
+import { Message, StatusUpdate, Conversation } from "ui/types";
 
 // Utils
-import { formatMessageTime, formatMessageDate } from "./utils/dateUtils";
+import { formatMessageTime, formatMessageDate } from "ui/utils/dateUtils";
 
 export const Leaf = () => {
 	const app = useApp();
@@ -46,6 +46,7 @@ export const Leaf = () => {
 	const [isHistoryVisible, setIsHistoryVisible] = useState(false);
 	const [currentStep, setCurrentStep] = useState<string>("");
 	const conversationRef = useRef<HTMLDivElement>(null);
+	const textareaRef = useRef<HTMLTextAreaElement>(null);
 
 	useEffect(() => {
 		if (app && messages.length > 0) {
@@ -394,6 +395,18 @@ export const Leaf = () => {
 		return null;
 	};
 
+	const autoResizeTextarea = () => {
+		if (textareaRef.current) {
+			textareaRef.current.style.height = "auto";
+			textareaRef.current.style.height =
+				textareaRef.current.scrollHeight + "px";
+		}
+	};
+
+	useEffect(() => {
+		autoResizeTextarea();
+	}, [message]);
+
 	return (
 		<div
 			className={`sage-container ${isHistoryVisible ? "with-history" : ""} ${isLoading ? "is-loading" : ""} ${app?.settings.hideThoughtProcess ? "sage-hide-thought-process" : ""}`}>
@@ -635,11 +648,13 @@ export const Leaf = () => {
 			<div className="sage-form">
 				<div className="sage-input-container">
 					<textarea
+						ref={textareaRef}
 						className="sage-input"
 						placeholder="Ask Sage AI..."
 						value={message}
 						onChange={(e) => {
 							setMessage(e.target.value);
+							autoResizeTextarea();
 							e.target.classList.add("sage-input");
 						}}
 						onKeyDown={handleKeyPress}

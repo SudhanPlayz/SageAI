@@ -82,35 +82,6 @@ class PromptModal extends Modal {
 			this.textarea.classList.add("edit-prompt-input");
 		});
 
-		if (this.isGenerateMode) {
-			const suggestionContainer = doc.createEl("div", {
-				cls: "prompt-suggestions",
-			});
-
-			const suggestions = [
-				"Write a list of 5 key points",
-				"Create a detailed outline",
-				"Draft an email response",
-				"Generate a table comparing...",
-				"Create a bulleted summary",
-			];
-
-			suggestions.forEach((suggestion) => {
-				const suggestionEl = suggestionContainer.createEl("div", {
-					cls: "prompt-suggestion",
-					text: suggestion,
-				});
-
-				suggestionEl.addEventListener("click", () => {
-					this.textarea.value = suggestion;
-					this.prompt = suggestion;
-					this.buttonEl.disabled = false;
-					this.updateCharCount();
-					this.textarea.focus();
-				});
-			});
-		}
-
 		const buttonContainer = doc.createEl("div", {
 			cls: "button-container",
 		});
@@ -119,12 +90,6 @@ class PromptModal extends Modal {
 			cls: "edit-button",
 		});
 		this.buttonEl.disabled = true;
-
-		this.loadingEl = buttonContainer.createEl("div", {
-			text: "Processing your request...",
-			cls: "loading-text",
-		});
-		this.loadingEl.classList.add("hidden");
 
 		buttonContainer.createEl("div", {
 			text: "Press Enter to submit",
