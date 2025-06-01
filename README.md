@@ -42,7 +42,7 @@ Sage AI is a powerful plugin that brings advanced AI capabilities to your note-t
 
 ### Using Sage AI
 
-[![Sage AI Usage Demo](https://img.youtube.com/vi/9XEplIKSbLE/0.jpg)](https://www.youtube.com/watch?v=9XEplIKSbLE)
+[![Sage AI Usage Demo](https://m04c1c9vtp.ufs.sh/f/7CIKNs50xIfi5oXgoNSuISAvKfBUXT0EY1ZgQjs7FecMrwPx)](https://www.youtube.com/watch?v=9XEplIKSbLE)
 
 #### Quick Access
 
