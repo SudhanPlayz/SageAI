@@ -5,7 +5,6 @@ import {
 	startMCPServer,
 	stopMCPServerByIndex,
 	getMCPToolsByIndex,
-	getAllMCPTools,
 } from "ai/agent/mcp";
 
 export class SettingsTab extends PluginSettingTab {
@@ -377,9 +376,9 @@ export class SettingsTab extends PluginSettingTab {
 		const serverInfo = serverHeader.createDiv("sage-mcp-server-info");
 		const serverTitle = serverInfo.createDiv("sage-mcp-server-title");
 
-		const titleEl = serverTitle.createEl("h4", {
-			text: server.name || `Server ${index + 1}`,
-		});
+		// const titleEl = serverTitle.createEl("h4", {
+		// 	text: server.name || `Server ${index + 1}`,
+		// });
 
 		const isRunning = isMCPServerRunning(index);
 		const statusBadge = serverTitle.createEl("span", {

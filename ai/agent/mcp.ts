@@ -22,9 +22,9 @@ export const startMCP = async (app: SageAI) => {
 				};
 			} else if (s.type === "stdio") {
 				transport = new StdioMCPTransport({
-					command: s.transport.command!,
-					args: s.transport.args!,
-					env: s.transport.env!,
+					command: s.transport.command ?? "",
+					args: s.transport.args ?? [],
+					env: s.transport.env ?? {},
 				});
 			}
 			if (transport) {
@@ -96,7 +96,9 @@ export const stopMCPServerByIndex = async (index: number) => {
 	if (!mcpClients[index]) return;
 	try {
 		await mcpClients[index].close();
-	} catch (e) {}
+	} catch (e) {
+		// Intentionally ignored
+	}
 	mcpClients.splice(index, 1);
 	mcpServers.splice(index, 1);
 };
@@ -112,9 +114,9 @@ export const startMCPServer = async (serverConfig: any) => {
 		};
 	} else if (serverConfig.type === "stdio") {
 		transport = new StdioMCPTransport({
-			command: serverConfig.transport.command!,
-			args: serverConfig.transport.args!,
-			env: serverConfig.transport.env!,
+			command: serverConfig.transport.command ?? "",
+			args: serverConfig.transport.args ?? [],
+			env: serverConfig.transport.env ?? {},
 		});
 	}
 	if (transport) {

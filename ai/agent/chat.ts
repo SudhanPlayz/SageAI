@@ -1,5 +1,4 @@
 import { smoothStream, streamText } from "ai";
-import { experimental_createMCPClient as createMCPClient } from "ai";
 import { getModel } from "../core/model";
 import { Conversation } from "lib/storage";
 import SageAI from "main";
