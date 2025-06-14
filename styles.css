@@ -435,6 +435,7 @@
 		opacity: 0;
 		transform: translateX(-2px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateX(0);
@@ -576,6 +577,7 @@
 	100% {
 		opacity: 0.7;
 	}
+
 	50% {
 		opacity: 1;
 	}
@@ -594,6 +596,7 @@
 		opacity: 0;
 		transform: translateY(-2px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
@@ -607,6 +610,7 @@
 		transform: scale(1);
 		opacity: 0.7;
 	}
+
 	30% {
 		transform: scale(1.2);
 		opacity: 1;
@@ -618,6 +622,7 @@
 		opacity: 0;
 		transform: translateY(8px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
@@ -628,6 +633,7 @@
 	from {
 		opacity: 0;
 	}
+
 	to {
 		opacity: 1;
 	}
@@ -1015,22 +1021,27 @@
 	font-size: 1.4em;
 	font-weight: 600;
 }
+
 .sage-message-content h2 {
 	font-size: 1.3em;
 	font-weight: 600;
 }
+
 .sage-message-content h3 {
 	font-size: 1.2em;
 	font-weight: 600;
 }
+
 .sage-message-content h4 {
 	font-size: 1.1em;
 	font-weight: 600;
 }
+
 .sage-message-content h5 {
 	font-size: 1em;
 	font-weight: 600;
 }
+
 .sage-message-content h6 {
 	font-size: 0.9em;
 	font-weight: 600;
@@ -1224,20 +1235,24 @@
 		border-color 0.15s,
 		background 0.15s;
 }
+
 .edit-prompt-input:focus {
 	border-color: #5865f2;
 	outline: none;
 	background: #23243a;
 }
+
 .edit-prompt-input::placeholder {
 	color: #8e8e8e;
 	font-style: italic;
 }
+
 .input-container {
 	width: 100%;
 	margin-bottom: 14px;
 	position: relative;
 }
+
 .input-container::after {
 	content: attr(data-char-count);
 	position: absolute;
@@ -1247,12 +1262,14 @@
 	color: #8e8e8e;
 	opacity: 0.7;
 }
+
 .button-container {
 	display: flex;
 	align-items: center;
 	gap: 10px;
 	width: 100%;
 }
+
 .edit-button {
 	padding: 10px 22px;
 	background: #5865f2;
@@ -1265,25 +1282,30 @@
 	transition: background 0.15s;
 	box-shadow: none;
 }
+
 .edit-button:disabled {
 	background: #3c3f51;
 	color: #8e8e8e;
 	cursor: not-allowed;
 }
+
 .edit-button:hover:not(:disabled),
 .edit-button:focus-visible:not(:disabled) {
 	background: #4752c4;
 }
+
 .loading-text {
 	font-size: 13px;
 	color: #888;
 	margin-left: auto;
 }
+
 .shortcut-hint {
 	font-size: 12px;
 	color: #8e8e8e;
 	margin-left: auto;
 }
+
 .error-message {
 	color: #e05050;
 	background: none;
@@ -1293,15 +1315,18 @@
 	margin-top: 10px;
 	display: none;
 }
+
 .error-message:not(.hidden) {
 	display: block;
 }
+
 .prompt-suggestions {
 	display: flex;
 	gap: 6px;
 	margin-bottom: 10px;
 	flex-wrap: wrap;
 }
+
 .prompt-suggestion {
 	padding: 4px 10px;
 	background: #f3f3f3;
@@ -1312,10 +1337,12 @@
 	cursor: pointer;
 	transition: background 0.15s;
 }
+
 .prompt-suggestion:hover {
 	background: #e8eafd;
 	color: #222;
 }
+
 .success-notification {
 	position: fixed;
 	bottom: 16px;
@@ -1331,9 +1358,11 @@
 	border: 1px solid #3c3f51;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
+
 .success-notification.hiding {
 	opacity: 0;
 }
+
 .modal-description {
 	color: #a0a0a0;
 	font-size: 14px;
@@ -1385,6 +1414,7 @@
 		transform: scale(1);
 		opacity: 1;
 	}
+
 	50% {
 		transform: scale(1.1);
 		opacity: 0.8;
@@ -1529,6 +1559,7 @@
 	100% {
 		transform: translateY(0);
 	}
+
 	50% {
 		transform: translateY(-3px);
 	}
@@ -1602,7 +1633,620 @@
 	from {
 		transform: rotate(0deg);
 	}
+
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+/* Settings */
+
+.sage-settings-header {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 32px;
+	padding: 24px;
+	background: linear-gradient(
+		135deg,
+		var(--background-primary) 0%,
+		var(--background-secondary) 100%
+	);
+	border-radius: 12px;
+	border: 1px solid var(--background-modifier-border);
+}
+
+.sage-header-icon {
+	flex-shrink: 0;
+	width: 48px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--interactive-accent);
+	border-radius: 12px;
+	color: var(--text-on-accent);
+}
+
+.sage-header-title {
+	margin: 0;
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--text-normal);
+}
+
+.sage-header-subtitle {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 14px;
+}
+
+.sage-settings-section {
+	margin-bottom: 32px;
+	background: var(--background-primary);
+	border-radius: 12px;
+	border: 1px solid var(--background-modifier-border);
+	overflow: hidden;
+}
+
+.sage-section-header {
+	padding: 20px 24px;
+	background: var(--background-secondary);
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.sage-section-title {
+	margin: 0 0 4px 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.sage-section-description {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 14px;
+}
+
+.sage-section-content {
+	padding: 16px 24px 24px;
+}
+
+.sage-setting-primary .setting-item-control {
+	min-width: 200px;
+}
+
+.sage-setting-secure .setting-item-control {
+	display: flex;
+	gap: 8px;
+}
+
+.sage-setting-toggle .setting-item-control {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.sage-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 16px;
+	border-radius: 8px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-primary);
+	color: var(--text-normal);
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.sage-button:hover {
+	background: var(--background-modifier-hover);
+	transform: translateY(-1px);
+}
+
+.sage-button-primary {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	border-color: var(--interactive-accent);
+}
+
+.sage-button-primary:hover {
+	background: var(--interactive-accent-hover);
+	border-color: var(--interactive-accent-hover);
+}
+
+.sage-mcp-container {
+	margin-top: 16px;
+}
+
+.sage-mcp-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.sage-mcp-title {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.sage-mcp-servers {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-bottom: 24px;
+}
+
+.sage-mcp-server {
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: all 0.2s ease;
+}
+
+.sage-mcp-server:hover {
+	border-color: var(--background-modifier-border-hover);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sage-mcp-server-disabled {
+	opacity: 0.6;
+}
+
+.sage-mcp-server-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 20px;
+	background: var(--background-primary);
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.sage-mcp-server-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.sage-mcp-server-title {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 4px;
+}
+
+.sage-mcp-server-title h4 {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.sage-status-badge {
+	padding: 4px 8px;
+	border-radius: 6px;
+	font-size: 12px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.sage-status-enabled {
+	background: rgba(46, 160, 67, 0.15);
+	color: #2ea043;
+}
+
+.sage-status-disabled {
+	background: rgba(248, 81, 73, 0.15);
+	color: #f85149;
+}
+
+.sage-mcp-server-command {
+	margin: 0;
+	font-family: var(--font-monospace);
+	font-size: 13px;
+	color: var(--text-muted);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.sage-mcp-server-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.sage-toggle-btn {
+	width: 44px;
+	height: 24px;
+	border-radius: 12px;
+	border: none;
+	cursor: pointer;
+	position: relative;
+	transition: all 0.2s ease;
+}
+
+.sage-toggle-enabled {
+	background: var(--interactive-accent);
+}
+
+.sage-toggle-disabled {
+	background: var(--background-modifier-border);
+}
+
+.sage-toggle-btn::after {
+	content: "";
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: white;
+	top: 3px;
+	transition: all 0.2s ease;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.sage-toggle-enabled::after {
+	left: 23px;
+}
+
+.sage-toggle-disabled::after {
+	left: 3px;
+}
+
+.sage-expand-btn,
+.sage-remove-btn {
+	width: 44px;
+	height: 44px;
+	border-radius: 6px;
+	border: 1px solid var(--background-modifier-border);
+	background: var(--background-primary);
+	color: var(--text-muted);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+}
+
+.sage-expand-btn svg,
+.sage-remove-btn svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+	margin: auto;
+}
+
+.sage-expand-btn:hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+.sage-remove-btn:hover {
+	background: rgba(248, 81, 73, 0.1);
+	color: #f85149;
+	border-color: rgba(248, 81, 73, 0.3);
+}
+
+.sage-mcp-server-details {
+	padding: 20px;
+	background: var(--background-secondary);
+}
+
+.sage-empty-state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 48px 24px;
+	flex-direction: column;
+	color: var(--text-muted);
+}
+
+.sage-empty-icon {
+	margin-bottom: 16px;
+	opacity: 0.5;
+}
+
+.sage-empty-state h4 {
+	margin: 0 0 8px 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.sage-empty-state p {
+	margin: 0;
+	font-size: 14px;
+}
+
+.sage-mcp-examples {
+	margin-top: 32px;
+	padding-top: 24px;
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+.sage-examples-header {
+	margin-bottom: 20px;
+}
+
+.sage-examples-title {
+	margin: 0 0 4px 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--text-normal);
+}
+
+.sage-examples-subtitle {
+	margin: 0;
+	font-size: 14px;
+	color: var(--text-muted);
+}
+
+.sage-examples-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 16px;
+}
+
+.sage-example-card {
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 12px;
+	padding: 20px;
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.sage-example-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	border-color: var(--interactive-accent);
+}
+
+.sage-example-github {
+	border-left: 4px solid #333;
+}
+
+.sage-example-search {
+	border-left: 4px solid #fb542b;
+}
+
+.sage-example-filesystem {
+	border-left: 4px solid #0969da;
+}
+
+.sage-example-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 12px;
+}
+
+.sage-example-name {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	line-height: 1;
+}
+
+.sage-example-description {
+	margin: 0 0 16px 0;
+	font-size: 14px;
+	color: var(--text-muted);
+	line-height: 1.4;
+}
+
+.sage-example-command {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 8px;
+	padding: 12px;
+}
+
+.sage-example-command code {
+	flex: 1;
+	font-family: var(--font-monospace);
+	font-size: 13px;
+	color: var(--text-normal);
+	background: none;
+}
+
+.sage-copy-btn {
+	width: 36px;
+	height: 36px;
+	border: none;
+	background: var(--background-modifier-hover);
+	color: var(--text-muted);
+	border-radius: 6px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+}
+
+.sage-copy-btn svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.sage-copy-btn:hover {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+.sage-support-section {
+	margin-top: 40px;
+	background: linear-gradient(
+		135deg,
+		var(--background-primary) 0%,
+		var(--background-secondary) 100%
+	);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 16px;
+	padding: 32px;
+	text-align: center;
+}
+
+.sage-support-header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	margin-bottom: 24px;
+}
+
+.sage-support-icon {
+	flex-shrink: 0;
+	width: 64px;
+	height: 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--interactive-accent);
+	border-radius: 16px;
+	color: var(--text-on-accent);
+}
+
+.sage-support-content {
+	text-align: left;
+}
+
+.sage-support-title {
+	margin: 0 0 8px 0;
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--text-normal);
+}
+
+.sage-support-subtitle {
+	margin: 0;
+	font-size: 16px;
+	color: var(--text-muted);
+}
+
+.sage-support-actions {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+	margin-bottom: 20px;
+}
+
+.sage-support-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	padding: 12px 24px;
+	border-radius: 12px;
+	text-decoration: none !important;
+	font-size: 16px;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+span {
+	text-decoration: none !important;
+}
+
+.sage-support-btn-primary {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sage-support-btn-primary:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sage-support-btn-secondary {
+	background: var(--background-primary);
+	color: var(--text-normal);
+	border: 2px solid var(--background-modifier-border);
+}
+
+.sage-support-btn-secondary:hover {
+	border-color: var(--interactive-accent);
+	background: var(--background-modifier-hover);
+	transform: translateY(-2px);
+}
+
+.sage-support-footer-text {
+	margin: 0;
+	font-size: 14px;
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+@media (max-width: 768px) {
+	.sage-settings-header {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.sage-support-header {
+		flex-direction: column;
+	}
+
+	.sage-support-content {
+		text-align: center;
+	}
+
+	.sage-support-actions {
+		flex-direction: column;
+	}
+
+	.sage-examples-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.sage-mcp-server-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.sage-mcp-server-actions {
+		align-self: flex-end;
+	}
+}
+
+@keyframes sage-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.sage-settings-section {
+	animation: sage-fade-in 0.3s ease-out;
+}
+
+.sage-mcp-server {
+	animation: sage-fade-in 0.3s ease-out;
+}
+
+.sage-example-card {
+	animation: sage-fade-in 0.3s ease-out;
 }

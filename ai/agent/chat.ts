@@ -1,4 +1,5 @@
 import { smoothStream, streamText } from "ai";
+import { experimental_createMCPClient as createMCPClient } from "ai";
 import { getModel } from "../core/model";
 import { Conversation } from "lib/storage";
 import SageAI from "main";
@@ -104,8 +105,9 @@ async function streamAIResponse(
 	return streamText({
 		model: getModel(app.settings),
 		messages: messages,
-		temperature: 0.7,
-		maxSteps: 10,
+		temperature: app.settings.temperature,
+		topP: app.settings.top_p,
+		maxSteps: 25,
 		tools: {
 			searchFiles: createSearchFilesTool(app, callbacks, allToolEvents),
 			readFile: createReadFileTool(app, callbacks, allToolEvents),
