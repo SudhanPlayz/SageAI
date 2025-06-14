@@ -32,6 +32,28 @@ export interface SageAISettings {
 	model: string;
 	baseURL?: string;
 	hideThoughtProcess: boolean;
+	enableMCP: boolean;
+	mcpServers: MCPServer[];
+	temperature?: number;
+	top_p?: number;
+	max_tokens?: number;
+}
+
+export interface MCPServer {
+	id: string;
+	name: string;
+	type: "stdio" | "sse";
+	transport: {
+		// Stdio Transport
+		command?: string;
+		args?: string[];
+		env?: Record<string, string>;
+
+		// SSE Transport
+		url?: string;
+		headers?: Record<string, string>;
+	};
+	enabled: boolean;
 }
 
 export interface SageCommand {
@@ -55,6 +77,10 @@ const DEFAULT_SETTINGS: SageAISettings = {
 	apiKey: "",
 	model: "gpt-4o-mini",
 	hideThoughtProcess: true,
+	enableMCP: false,
+	mcpServers: [],
+	temperature: 0.7,
+	top_p: 1,
 };
 
 const commands = [SummarizeCommand, ExplainCommand, EditCommand];
