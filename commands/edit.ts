@@ -200,7 +200,7 @@ class PromptModal extends Modal {
 }
 
 export const EditCommand: SageCommand = {
-	id: "sageai-edit",
+	id: "edit",
 	name: "Edit/Generate",
 	editorCallback: async (app, editor, view) => {
 		const selection = editor.getSelection();

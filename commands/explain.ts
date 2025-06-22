@@ -39,7 +39,7 @@ const typeText = (element: HTMLElement, text: string) => {
 };
 
 export const ExplainCommand: SageCommand = {
-	id: "sageai-explain",
+	id: "explain",
 	name: "Explain",
 	editorCallback: async (app, editor, view) => {
 		const selection = editor.getSelection();
