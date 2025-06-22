@@ -16,6 +16,8 @@ export const ObsidianMarkdownContent: React.FC<
 	useEffect(() => {
 		if (!containerRef.current || !content || !app) return;
 
+		const component = new Component();
+
 		while (containerRef.current.firstChild) {
 			containerRef.current.removeChild(containerRef.current.firstChild);
 		}
@@ -30,7 +32,7 @@ export const ObsidianMarkdownContent: React.FC<
 				processedContent,
 				containerRef.current,
 				"./",
-				{} as Component,
+				component,
 			);
 		} catch (error) {
 			console.error(
@@ -45,6 +47,10 @@ export const ObsidianMarkdownContent: React.FC<
 				containerRef.current?.appendChild(div);
 			});
 		}
+
+		return () => {
+			component.unload();
+		};
 	}, [content, app]);
 
 	return <div className="obsidian-markdown-content" ref={containerRef}></div>;
