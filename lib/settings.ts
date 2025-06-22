@@ -15,7 +15,7 @@ export class SettingsTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName("API Provider")
+			.setName("API provider")
 			.setDesc("Select which AI provider to use")
 			.addDropdown((dropdown) =>
 				dropdown
@@ -37,7 +37,7 @@ export class SettingsTab extends PluginSettingTab {
 
 		if (this.plugin.settings.apiProvider !== APIProvider.OLLAMA) {
 			new Setting(containerEl)
-				.setName("API Key")
+				.setName("API key")
 				.setDesc("Enter your API key for the selected provider")
 				.addText((text) =>
 					text
@@ -81,7 +81,7 @@ export class SettingsTab extends PluginSettingTab {
 		}
 
 		new Setting(containerEl)
-			.setName("Hide Thought Process")
+			.setName("Hide thought process")
 			.setDesc("Hide the AI's thought process and tool usage details")
 			.addToggle((toggle) =>
 				toggle

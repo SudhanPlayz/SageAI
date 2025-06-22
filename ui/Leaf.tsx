@@ -437,7 +437,7 @@ export const Leaf = () => {
 					<button
 						className={`sage-header-button ${isHistoryVisible ? "active" : ""}`}
 						onClick={() => setIsHistoryVisible(!isHistoryVisible)}
-						title="Chat History">
+						title="Chat history">
 						<HistoryIcon size={16} />
 					</button>
 				</div>

@@ -72,7 +72,7 @@ export default class SageAI extends Plugin {
 
 		this.addCommand({
 			id: "sage-ai-activate-view",
-			name: "Activate View",
+			name: "Activate view",
 			callback: () => this.activateView(),
 		});
 

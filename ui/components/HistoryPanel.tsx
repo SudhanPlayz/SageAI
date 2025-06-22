@@ -44,7 +44,7 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({
 			<div className="sage-history-header">
 				<div className="sage-history-title">
 					<ClockIcon size={16} />
-					<h3>Chat History</h3>
+					<h3>Chat history</h3>
 				</div>
 				<button className="sage-history-close" onClick={onClose}>
 					<ChevronRightIcon size={18} />
