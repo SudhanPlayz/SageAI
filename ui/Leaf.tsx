@@ -12,6 +12,7 @@ import {
 	FileEditIcon,
 	XIcon,
 	CheckIcon,
+	BrainCog,
 } from "lucide-react";
 import { chatWithAgent } from "ai/agent";
 import { useApp } from "hooks/app";
@@ -420,8 +421,12 @@ export const Leaf = () => {
 				onClose={() => setIsHistoryVisible(false)}
 				onSelectConversation={selectConversation}
 				onDeleteConversation={deleteConversation}
-				currentConversationId={conversation.id}
-			/>
+				currentConversationId={conversation.id}>
+				<div className="sage-chat-history-header" title="Chat history">
+					<BrainCog size={16} />
+					<h3>Chat history</h3>
+				</div>
+			</HistoryPanel>
 
 			<div className="sage-header">
 				<div className="sage-header-left">
@@ -437,7 +442,7 @@ export const Leaf = () => {
 					<button
 						className={`sage-header-button ${isHistoryVisible ? "active" : ""}`}
 						onClick={() => setIsHistoryVisible(!isHistoryVisible)}
-						title="Chat History">
+						title="Chat history">
 						<HistoryIcon size={16} />
 					</button>
 				</div>

@@ -53,6 +53,7 @@ export interface HistoryPanelProps {
 	onSelectConversation: (conversation: Conversation) => void;
 	onDeleteConversation: (id: string) => void;
 	currentConversationId: string;
+	children: React.ReactNode;
 }
 
 export interface Conversation {

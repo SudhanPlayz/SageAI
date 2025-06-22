@@ -92,7 +92,7 @@ export class SettingsTab extends PluginSettingTab {
 
 	private createAPISettings(sectionContent: HTMLElement): void {
 		new Setting(sectionContent)
-			.setName("API Provider")
+			.setName("API provider")
 			.setDesc("Choose your preferred AI service provider")
 			.setClass("sage-setting-primary")
 			.addDropdown((dropdown) => {
@@ -141,7 +141,7 @@ export class SettingsTab extends PluginSettingTab {
 
 		if (this.plugin.settings.apiProvider !== APIProvider.OLLAMA) {
 			const apiKeySetting = new Setting(sectionContent)
-				.setName("API Key")
+				.setName("API key")
 				.setDesc("Enter your API key for secure authentication")
 				.setClass("sage-setting-secure")
 				.addText((text) => {
@@ -256,7 +256,7 @@ export class SettingsTab extends PluginSettingTab {
 			});
 
 		new Setting(sectionContent)
-			.setName("Hide Thought Process")
+			.setName("Hide thought process")
 			.setDesc(
 				"Hide AI reasoning steps and tool usage details for cleaner output",
 			)

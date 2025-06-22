@@ -96,10 +96,16 @@ export default class SageAI extends Plugin {
 
 		this.registerView(VIEW_TYPE_AGENT, (leaf) => new AgentView(leaf, this));
 
+		this.app.addRibbonIcon("brain-cog", "Sage AI", () => {
+			this.activateView();
+		});
+
 		this.addCommand({
-			id: "sage-ai-activate-view",
-			name: "Activate View",
-			callback: () => this.activateView(),
+			id: "activate-view",
+			name: "Activate view",
+			callback: () => {
+				this.activateView();
+			},
 		});
 
 		for (const command of commands) {

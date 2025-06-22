@@ -11,6 +11,7 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({
 	onSelectConversation,
 	onDeleteConversation,
 	currentConversationId,
+	children,
 }) => {
 	const app = useApp();
 	const [conversations, setConversations] = useState<Conversation[]>([]);
@@ -42,10 +43,7 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({
 	return (
 		<div className="sage-history-panel">
 			<div className="sage-history-header">
-				<div className="sage-history-title">
-					<ClockIcon size={16} />
-					<h3>Chat History</h3>
-				</div>
+				{children}
 				<button className="sage-history-close" onClick={onClose}>
 					<ChevronRightIcon size={18} />
 				</button>
