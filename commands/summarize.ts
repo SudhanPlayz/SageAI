@@ -21,8 +21,8 @@ const summarize = async (settings: SageAISettings, text: string) => {
 };
 
 export const SummarizeCommand: SageCommand = {
-	id: "sageai-summarize",
-	name: "Summarize",
+	id: "summarize",
+	name: "Summarize with AI",
 	editorCallback: async (app, editor, view) => {
 		if (!view || !view.file) {
 			return;
