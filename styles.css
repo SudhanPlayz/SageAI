@@ -1433,6 +1433,8 @@
 	flex: 1;
 	justify-content: center;
 	font-size: 0.95rem;
+	opacity: 1;
+	transition: opacity 0.2s;
 }
 
 .sage-funding-button:hover {
@@ -1504,6 +1506,10 @@
 
 .sage-funding-button:hover .sage-funding-button-shine {
 	left: 100%;
+}
+
+.sage-funding-button.button-hovered {
+	opacity: 0.9;
 }
 
 .sage-funding-footer {
@@ -1605,4 +1611,24 @@
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+/* Typing animation using data-delay attribute */
+.typing-char {
+	animation: typing-fade-in 0.3s both;
+	animation-delay: attr(data-delay s);
+}
+@keyframes typing-fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Auto-resize textarea */
+.sage-auto-resize {
+	height: var(--dynamic-height, auto) !important;
+	resize: vertical;
 }

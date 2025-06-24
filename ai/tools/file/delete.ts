@@ -2,6 +2,7 @@ import { tool } from "ai";
 import { z } from "zod";
 import SageAI from "main";
 import { StreamCallbacks, ToolEvent, ToolErrorResult } from "ai/types";
+import { TAbstractFile } from "obsidian";
 
 export function createDeleteFileTool(
 	app: SageAI,
@@ -49,7 +50,7 @@ export function createDeleteFileTool(
 					return errorResult;
 				}
 
-				await app.app.vault.delete(file);
+				await app.app.fileManager.trashFile(file as TAbstractFile);
 
 				const result = {
 					success: true,

@@ -2,7 +2,7 @@ import { tool } from "ai";
 import { z } from "zod";
 import { StreamCallbacks, ToolEvent, ToolErrorResult } from "ai/types";
 import SageAI from "main";
-import { TFile } from "obsidian";
+import { TFile, TAbstractFile } from "obsidian";
 
 export function createDeleteFolderTool(
 	app: SageAI,
@@ -37,7 +37,7 @@ export function createDeleteFolderTool(
 					throw new Error(`"${path}" is a file, not a folder`);
 				}
 
-				await app.app.vault.delete(folder, true);
+				await app.app.fileManager.trashFile(folder as TAbstractFile);
 
 				const result = {
 					success: true,

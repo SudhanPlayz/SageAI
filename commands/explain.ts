@@ -34,7 +34,7 @@ const typeText = (element: HTMLElement, text: string) => {
 		const span = element.createSpan();
 		span.setText(char);
 		span.classList.add("typing-char");
-		span.style.setProperty("--delay", `${index * 0.005}s`);
+		span.setAttr("data-delay", index * 0.005);
 	});
 };
 

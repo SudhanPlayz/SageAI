@@ -397,9 +397,11 @@ export const Leaf = () => {
 
 	const autoResizeTextarea = () => {
 		if (textareaRef.current) {
-			textareaRef.current.style.height = "auto";
-			textareaRef.current.style.height =
-				textareaRef.current.scrollHeight + "px";
+			textareaRef.current.classList.add("sage-auto-resize");
+			textareaRef.current.style.setProperty(
+				"--dynamic-height",
+				textareaRef.current.scrollHeight + "px",
+			);
 		}
 	};
 

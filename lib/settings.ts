@@ -99,15 +99,33 @@ export class SettingsTab extends PluginSettingTab {
 		const sparklesIcon = header.createEl("div", {
 			cls: "lucide lucide-sparkles",
 		});
-		sparklesIcon.innerHTML = `
-			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
-				<path d="M20 3v4"></path>
-				<path d="M22 5h-4"></path>
-				<path d="M4 17v2"></path>
-				<path d="M5 18H3"></path>
-			</svg>
-		`;
+		const sparklesSvg = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"svg",
+		);
+		sparklesSvg.setAttribute("width", "30");
+		sparklesSvg.setAttribute("height", "30");
+		sparklesSvg.setAttribute("viewBox", "0 0 24 24");
+		sparklesSvg.setAttribute("fill", "none");
+		sparklesSvg.setAttribute("stroke", "currentColor");
+		sparklesSvg.setAttribute("stroke-width", "2");
+		sparklesSvg.setAttribute("stroke-linecap", "round");
+		sparklesSvg.setAttribute("stroke-linejoin", "round");
+		[
+			"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z",
+			"M20 3v4",
+			"M22 5h-4",
+			"M4 17v2",
+			"M5 18H3",
+		].forEach((d) => {
+			const path = document.createElementNS(
+				"http://www.w3.org/2000/svg",
+				"path",
+			);
+			path.setAttribute("d", d);
+			sparklesSvg.appendChild(path);
+		});
+		sparklesIcon.appendChild(sparklesSvg);
 		header.createEl("h3", {
 			text: "Support Sage AI",
 			cls: "sage-funding-title",
@@ -133,11 +151,29 @@ export class SettingsTab extends PluginSettingTab {
 		const sponsorIcon = sponsorButton.createEl("div", {
 			cls: "button-icon",
 		});
-		sponsorIcon.innerHTML = `
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-			</svg>
-		`;
+		const sponsorSvg = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"svg",
+		);
+		sponsorSvg.setAttribute("width", "16");
+		sponsorSvg.setAttribute("height", "16");
+		sponsorSvg.setAttribute("viewBox", "0 0 24 24");
+		sponsorSvg.setAttribute("fill", "none");
+		sponsorSvg.setAttribute("stroke", "currentColor");
+		sponsorSvg.setAttribute("stroke-width", "2");
+		sponsorSvg.setAttribute("stroke-linecap", "round");
+		sponsorSvg.setAttribute("stroke-linejoin", "round");
+		[
+			"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22",
+		].forEach((d) => {
+			const path = document.createElementNS(
+				"http://www.w3.org/2000/svg",
+				"path",
+			);
+			path.setAttribute("d", d);
+			sponsorSvg.appendChild(path);
+		});
+		sponsorIcon.appendChild(sponsorSvg);
 		sponsorButton.createSpan({ text: "Become a Sponsor" });
 		sponsorButton.createEl("span", { cls: "sage-funding-button-shine" });
 
@@ -150,21 +186,57 @@ export class SettingsTab extends PluginSettingTab {
 			cls: "sage-funding-button sage-funding-button-secondary",
 		});
 		const starIcon = starButton.createEl("div", { cls: "button-icon" });
-		starIcon.innerHTML = `
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-			</svg>
-		`;
+		const starSvg = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"svg",
+		);
+		starSvg.setAttribute("width", "16");
+		starSvg.setAttribute("height", "16");
+		starSvg.setAttribute("viewBox", "0 0 24 24");
+		starSvg.setAttribute("fill", "none");
+		starSvg.setAttribute("stroke", "currentColor");
+		starSvg.setAttribute("stroke-width", "2");
+		starSvg.setAttribute("stroke-linecap", "round");
+		starSvg.setAttribute("stroke-linejoin", "round");
+		[
+			"M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z",
+		].forEach((d) => {
+			const path = document.createElementNS(
+				"http://www.w3.org/2000/svg",
+				"path",
+			);
+			path.setAttribute("d", d);
+			starSvg.appendChild(path);
+		});
+		starIcon.appendChild(starSvg);
 		starButton.createSpan({ text: "Star on GitHub" });
 		starButton.createEl("span", { cls: "sage-funding-button-shine" });
 
 		const footer = fundingContainer.createDiv("sage-funding-footer");
 		const footerIcon = footer.createEl("div", { cls: "footer-icon" });
-		footerIcon.innerHTML = `
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-			</svg>
-		`;
+		const footerSvg = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"svg",
+		);
+		footerSvg.setAttribute("width", "16");
+		footerSvg.setAttribute("height", "16");
+		footerSvg.setAttribute("viewBox", "0 0 24 24");
+		footerSvg.setAttribute("fill", "none");
+		footerSvg.setAttribute("stroke", "currentColor");
+		footerSvg.setAttribute("stroke-width", "2");
+		footerSvg.setAttribute("stroke-linecap", "round");
+		footerSvg.setAttribute("stroke-linejoin", "round");
+		[
+			"M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z",
+		].forEach((d) => {
+			const path = document.createElementNS(
+				"http://www.w3.org/2000/svg",
+				"path",
+			);
+			path.setAttribute("d", d);
+			footerSvg.appendChild(path);
+		});
+		footerIcon.appendChild(footerSvg);
 		footer.createEl("p", {
 			text: "Every contribution, big or small, helps us make Sage AI better! <3",
 			cls: "sage-funding-footer-text",
@@ -173,10 +245,10 @@ export class SettingsTab extends PluginSettingTab {
 		const buttons = fundingEl.querySelectorAll("a");
 		buttons.forEach((button) => {
 			button.addEventListener("mouseover", () => {
-				button.style.opacity = "0.9";
+				button.classList.add("button-hovered");
 			});
 			button.addEventListener("mouseout", () => {
-				button.style.opacity = "1";
+				button.classList.remove("button-hovered");
 			});
 		});
 	}
