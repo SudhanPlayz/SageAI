@@ -25,6 +25,20 @@ import { enhancePromptWithEditorContext } from "../utils/context";
 import { processAIResponse } from "./response";
 import { handleChatError } from "./error";
 
+interface AIResult {
+	textStream?: AsyncIterable<string>;
+	toolCalls?: Array<{
+		toolName: string;
+		args: Record<string, unknown>;
+		toolCallId: string;
+	}>;
+	toolResults?: Array<{
+		toolName: string;
+		toolCallId: string;
+		result: unknown;
+	}>;
+}
+
 export const chatWithAgent = async (
 	app: SageAI,
 	conversation: Conversation,
@@ -55,7 +69,7 @@ export const chatWithAgent = async (
 			callbacks.onStart();
 		}
 
-		const result = await streamAIResponse(
+		const result: AIResult = await streamAIResponse(
 			app,
 			conversation,
 			callbacks,
@@ -64,7 +78,7 @@ export const chatWithAgent = async (
 		);
 
 		const response = await processAIResponse(
-			result as any,
+			result,
 			allToolEvents,
 			conversation,
 			storage,
@@ -89,7 +103,7 @@ async function streamAIResponse(
 	callbacks?: StreamCallbacks,
 	allToolEvents: ToolEvent[] = [],
 	enhancedPrompt?: string,
-) {
+): Promise<AIResult> {
 	const messages = [...conversation.messages];
 	if (enhancedPrompt) {
 		const lastMessage = messages[messages.length - 1];
@@ -101,7 +115,7 @@ async function streamAIResponse(
 		}
 	}
 
-	return streamText({
+	const raw = await streamText({
 		model: getModel(app.settings),
 		messages: messages,
 		temperature: 0.7,
@@ -123,4 +137,30 @@ async function streamAIResponse(
 			delayInMs: 20,
 		}),
 	});
+
+	// Await and map toolCalls and toolResults if they are promises
+	const toolCallsRaw = raw.toolCalls ? await raw.toolCalls : [];
+	const toolResultsRaw = raw.toolResults ? await raw.toolResults : [];
+
+	const toolCalls = Array.isArray(toolCallsRaw)
+		? toolCallsRaw.map((call) => ({
+				toolName: call.toolName,
+				args: call.args,
+				toolCallId: call.toolCallId,
+			}))
+		: [];
+
+	const toolResults = Array.isArray(toolResultsRaw)
+		? toolResultsRaw.map((result) => ({
+				toolName: result.toolName,
+				toolCallId: result.toolCallId,
+				result: result.result,
+			}))
+		: [];
+
+	return {
+		textStream: raw.textStream,
+		toolCalls,
+		toolResults,
+	};
 }
