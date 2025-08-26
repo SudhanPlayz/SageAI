@@ -67,7 +67,7 @@ Sage AI is a powerful plugin that brings advanced AI capabilities to your note-t
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v16+)
 - npm or yarn
 - Git
 
